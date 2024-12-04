@@ -9,6 +9,8 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
+
 /**
  * Inspector Controls
  */
@@ -133,6 +135,20 @@ export default class Inspector extends Component {
       arrowSize,
       arrowBorderSize,
       arrowBorderRadius,
+      arrowTopRadius,
+      arrowRightRadius,
+      arrowBottomRadius,
+      arrowLeftRadius,
+      arrowTopRadiusTablet,
+      arrowRightRadiusTablet,
+      arrowBottomRadiusTablet,
+      arrowLeftRadiusTablet,
+      arrowTopRadiusMobile,
+      arrowRightRadiusMobile,
+      arrowBottomRadiusMobile,
+      arrowLeftRadiusMobile,
+      arrowIsRadiusControlConnected,
+      arrowIsRadiusValueUpdated,
       titleColor,
       contentColor,
       metaColor,
@@ -399,6 +415,28 @@ export default class Inspector extends Component {
       }
       return "full";
     };
+
+    // backward compatibility for border radius control 
+
+    if (!arrowIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          arrowTopRadius:          arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadius,
+          arrowBottomRadius:       arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadius,
+          arrowLeftRadius:         arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadius,
+          arrowRightRadius:        arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadius,
+          arrowTopRadiusTablet:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusTablet,
+          arrowBottomRadiusTablet: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusTablet,
+          arrowRightRadiusTablet:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusTablet,
+          arrowLeftRadiusTablet:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusTablet,
+          arrowTopRadiusMobile:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusMobile,
+          arrowBottomRadiusMobile: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusMobile,
+          arrowLeftRadiusMobile:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusMobile,
+          arrowRightRadiusMobile:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({arrowIsRadiusValueUpdated: true});
+    }
 
     return (
       <InspectorControls>
@@ -742,14 +780,9 @@ export default class Inspector extends Component {
                     min={0}
                     max={50}
                   />
-                  <RbeaRangeControl
-                    label={__("Arrow Border Radius", "responsive-block-editor-addons")}
-                    value={arrowBorderRadius}
-                    onChange={(value) =>
-                      setAttributes({ arrowBorderRadius: value })
-                    }
-                    min={0}
-                    max={50}
+                  <RbeaBorderRadiusControl
+                    attrNameTemplate="arrow%s"
+                    {...this.props}
                   />
                 </Fragment>
               )}

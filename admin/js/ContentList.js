@@ -23,7 +23,7 @@ const HelpContents = [
         'links': [
             {
                 'title': __( 'View Now', 'responsive-block-editor-addons' ),
-                'url'  : 'https://cyberchimps.com/blocks/',
+                'url'  : 'https://cyberchimps.com/responsive-blocks/ ',
             }
         ]
     },

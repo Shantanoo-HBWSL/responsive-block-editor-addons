@@ -16,6 +16,7 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 // Import block components
 const { InspectorControls, PanelColorSettings, AlignmentToolbar } = wp.blockEditor
@@ -113,6 +114,20 @@ export default class Inspector extends Component {
         formButtonPaddingMobile,
         formButtonPaddingToggle,
         formButtonBorderRadius,
+        formButtonTopRadius,
+        formButtonRightRadius,
+        formButtonBottomRadius,
+        formButtonLeftRadius,
+        formButtonTopRadiusTablet,
+        formButtonRightRadiusTablet,
+        formButtonBottomRadiusTablet,
+        formButtonLeftRadiusTablet,
+        formButtonTopRadiusMobile,
+        formButtonRightRadiusMobile,
+        formButtonBottomRadiusMobile,
+        formButtonLeftRadiusMobile,
+        formButtonIsRadiusControlConnected,
+        formButtonIsRadiusValueUpdated,
         formButtonAlign,
         formButtonAlignTablet,
         formButtonAlignMobile,
@@ -125,6 +140,20 @@ export default class Inspector extends Component {
         formSuccessMessageColor,
         formErrorMessageColor,
         formBorderRadius,
+        formTopRadius,
+        formRightRadius,
+        formBottomRadius,
+        formLeftRadius,
+        formTopRadiusTablet,
+        formRightRadiusTablet,
+        formBottomRadiusTablet,
+        formLeftRadiusTablet,
+        formTopRadiusMobile,
+        formRightRadiusMobile,
+        formBottomRadiusMobile,
+        formLeftRadiusMobile,
+        formIsRadiusControlConnected,
+        formIsRadiusValueUpdated,
         formBorderWidth,
         formHelperTextSize,
         formSuccessErrorMessageSize,
@@ -288,6 +317,49 @@ export default class Inspector extends Component {
         slug: 'xl'
       }
     ];
+
+    // backward compatibility for form border radius control
+    if (!formIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          formTopRadius:          formBorderRadius !== undefined ? formBorderRadius : formTopRadius,
+          formBottomRadius:       formBorderRadius !== undefined ? formBorderRadius : formBottomRadius,
+          formLeftRadius:         formBorderRadius !== undefined ? formBorderRadius : formLeftRadius,
+          formRightRadius:        formBorderRadius !== undefined ? formBorderRadius : formRightRadius,
+          formTopRadiusTablet:    formBorderRadius !== undefined ? formBorderRadius : formTopRadiusTablet,
+          formBottomRadiusTablet: formBorderRadius !== undefined ? formBorderRadius : formBottomRadiusTablet,
+          formRightRadiusTablet:  formBorderRadius !== undefined ? formBorderRadius : formRightRadiusTablet,
+          formLeftRadiusTablet:   formBorderRadius !== undefined ? formBorderRadius : formLeftRadiusTablet,
+          formTopRadiusMobile:    formBorderRadius !== undefined ? formBorderRadius : formTopRadiusMobile,
+          formBottomRadiusMobile: formBorderRadius !== undefined ? formBorderRadius : formBottomRadiusMobile,
+          formLeftRadiusMobile:   formBorderRadius !== undefined ? formBorderRadius : formLeftRadiusMobile,
+          formRightRadiusMobile:  formBorderRadius !== undefined ? formBorderRadius : formRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({formIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for form button border radius control
+
+    if (!formButtonIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          formButtonTopRadius:          formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonTopRadius,
+          formButtonBottomRadius:       formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonBottomRadius,
+          formButtonLeftRadius:         formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonLeftRadius,
+          formButtonRightRadius:        formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonRightRadius,
+          formButtonTopRadiusTablet:    formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonTopRadiusTablet,
+          formButtonBottomRadiusTablet: formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonBottomRadiusTablet,
+          formButtonRightRadiusTablet:  formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonRightRadiusTablet,
+          formButtonLeftRadiusTablet:   formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonLeftRadiusTablet,
+          formButtonTopRadiusMobile:    formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonTopRadiusMobile,
+          formButtonBottomRadiusMobile: formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonBottomRadiusMobile,
+          formButtonLeftRadiusMobile:   formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonLeftRadiusMobile,
+          formButtonRightRadiusMobile:  formButtonBorderRadius !== undefined ? formButtonBorderRadius : formButtonRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({formButtonIsRadiusValueUpdated: true});
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -558,12 +630,9 @@ export default class Inspector extends Component {
               <hr className="responsive-block-editor-addons-editor__separator" />
 
               <div className="responsive-block-editor-addons-form-border-radius-control">
-                <BoxControl
-                  label={__("Button Border Radius", "responsive-block-editor-addons")}
-                  values={formButtonBorderRadius}
-                  units={[{ value: 'px', label: 'px', default: 8 }]}
-                  onChange={ ( value ) => {setAttributes({ formButtonBorderRadius: value }) } }
-                  resetValues={{ top: '4px', right: '4px', bottom: '4px', left: '4px' }}
+                <RbeaBorderRadiusControl
+                  attrNameTemplate="formButton%s"
+                  {...this.props}
                 />
               </div>
 
@@ -736,12 +805,9 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <div className="responsive-block-editor-addons-form-border-radius-control">
-                <BoxControl
-                  label={__("Border Radius", "responsive-block-editor-addons")}
-                  values={formBorderRadius}
-                  units={[{ value: 'px', label: 'px', default: 4 }]}
-                  onChange={ ( value ) => {setAttributes({ formBorderRadius: value }) } }
-                  resetValues={{ top: '4px', right: '4px', bottom: '4px', left: '4px' }}
+                <RbeaBorderRadiusControl
+                  attrNameTemplate="form%s"
+                  {...this.props}
                 />
               </div>
 

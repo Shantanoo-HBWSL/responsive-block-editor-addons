@@ -35,6 +35,19 @@ function EditorStyles(props) {
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
+    blockIsRadiusControlConnected,
     blockBorderColor,
     icon_color,
     opacity,
@@ -46,6 +59,18 @@ function EditorStyles(props) {
     contentSpace,
     iconShapeColor,
     shapeBorderRadius,
+    shapeBorderTopRadius,
+    shapeBorderRightRadius,
+    shapeBorderBottomRadius,
+    shapeBorderLeftRadius,
+    shapeBorderTopRadiusTablet,
+    shapeBorderRightRadiusTablet,
+    shapeBorderBottomRadiusTablet,
+    shapeBorderLeftRadiusTablet,
+    shapeBorderTopRadiusMobile,
+    shapeBorderRightRadiusMobile,
+    shapeBorderBottomRadiusMobile,
+    shapeBorderLeftRadiusMobile,
     shapePadding,
     shapeBorder,
     contentSpacing,
@@ -108,12 +133,18 @@ function EditorStyles(props) {
     },
     ".responsive-count__inner .responsive-block-editor-addons-count-up__source-wrap.res-countup-icon-design-shaped .responsive-block-editor-addons-count-up__source-icon": {
       "background-color": iconShapeColor,
-      "border-radius": generateCSSUnit(shapeBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(shapeBorderTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(shapeBorderRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(shapeBorderBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(shapeBorderLeftRadius, "px"),
       padding: generateCSSUnit(shapePadding, "px"),
     },
     ".responsive-count__inner .responsive-block-editor-addons-count-up__source-wrap.res-countup-icon-design-outline .responsive-block-editor-addons-count-up__source-icon": {
       "border-color": iconShapeColor,
-      "border-radius": generateCSSUnit(shapeBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(shapeBorderTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(shapeBorderRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(shapeBorderBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(shapeBorderLeftRadius, "px"),
       padding: generateCSSUnit(shapePadding, "px"),
       "border-width": generateCSSUnit(shapeBorder, "px"),
     },
@@ -130,7 +161,10 @@ function EditorStyles(props) {
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-color": blockBorderColor,
       "border-style": blockBorderStyle,
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
     },
     " .responsive-block-editor-addons-count-up__source-wrap": {
       "margin-bottom": generateCSSUnit(iconSpacing, "px"),
@@ -189,7 +223,19 @@ function EditorStyles(props) {
 	},
 	" .responsive-count-item__title": {
 		"margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
-	}
+	},
+  ".responsive-count__inner .responsive-block-editor-addons-count-up__source-wrap.res-countup-icon-design-shaped .responsive-block-editor-addons-count-up__source-icon , .responsive-count__inner .responsive-block-editor-addons-count-up__source-wrap.res-countup-icon-design-outline .responsive-block-editor-addons-count-up__source-icon": {
+      "border-top-left-radius": generateCSSUnit(shapeBorderTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(shapeBorderRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(shapeBorderBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(shapeBorderLeftRadiusMobile, "px"),
+    },
+  " .responsive-count-item": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -220,7 +266,19 @@ function EditorStyles(props) {
 	},
 	" .responsive-count-item__title": {
 		"margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
-	}
+	},
+  ".responsive-count__inner .responsive-block-editor-addons-count-up__source-wrap.res-countup-icon-design-shaped .responsive-block-editor-addons-count-up__source-icon , .responsive-count__inner .responsive-block-editor-addons-count-up__source-wrap.res-countup-icon-design-outline .responsive-block-editor-addons-count-up__source-icon": {
+      "border-top-left-radius": generateCSSUnit(shapeBorderTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(shapeBorderRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(shapeBorderBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(shapeBorderLeftRadiusTablet, "px"),
+    },
+    " .responsive-count-item": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
   };
 
   var paddingContent = {

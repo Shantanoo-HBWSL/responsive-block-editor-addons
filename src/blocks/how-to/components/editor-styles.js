@@ -52,6 +52,20 @@ function EditorStyles(props) {
         materialsListStyle,
         borderStyle,
         borderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusControlConnected,
+        blockIsRadiusValueUpdated,
         borderWidth,
         borderColor,
         stepsMargin,
@@ -63,7 +77,7 @@ function EditorStyles(props) {
     } = props.attributes;
 
     const border = "none" !== borderStyle ? generateCSSUnit(borderWidth, "px") + " " + borderStyle + " " + borderColor : "";
-    const borderRad = "none" !== borderStyle ? generateCSSUnit(borderRadius, "px") : "";
+    const borderRad = "none" !== borderStyle ? generateCSSUnit(borderRadius, "px") : ""; 
 
     var selectors = {
         "": {
@@ -177,7 +191,10 @@ function EditorStyles(props) {
         },
         " .responsive-block-editor-addons-block-how-to-main-image": {
             "border": border,
-            "border-radius": borderRad
+            "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+            "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+            "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+            "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
         },
         " .responsive-block-editor-addons-block-how-to-steps .block-editor-block-list__block": {
             "margin-top": generateCSSUnit(stepsMargin, "px")
@@ -249,6 +266,12 @@ function EditorStyles(props) {
         " .responsive-block-editor-addons-block-how-to-steps .block-editor-block-list__block": {
             "margin-top": generateCSSUnit(stepsMarginMobile, "px")
         },
+        " .responsive-block-editor-addons-block-how-to-main-image": {
+            "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+            "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+            "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+            "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+        },
     };
 
     var tablet_selectors = {
@@ -307,6 +330,12 @@ function EditorStyles(props) {
         },
         " .responsive-block-editor-addons-block-how-to-steps .block-editor-block-list__block": {
             "margin-top": generateCSSUnit(stepsMarginTablet, "px")
+        },
+        " .responsive-block-editor-addons-block-how-to-main-image": {
+            "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+            "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+            "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+            "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
         },
     };
 

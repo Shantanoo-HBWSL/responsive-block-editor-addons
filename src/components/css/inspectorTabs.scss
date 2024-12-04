@@ -303,37 +303,6 @@ $border-color: #D6D9DD;
 
 }
 
-.rbea-border-style-selector {
-
-  .components-radio-control__option{
-    height: 35px;
-    width: 100%;
-    border: 1px solid #D9D9D9;
-    border: 1px solid #D9D9D9;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .components-flex.components-h-stack.components-v-stack{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    row-gap: 0px; 
-    column-gap: 3px; 
-  }
-
-  .rbea-border-style-select-control-label{
-    font-family: Roboto;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 16.41px;
-    text-align: center;
-    color: #666666;
-    margin-bottom: 0px;
-  }
-}
-
 .rbea-inspector-tab {
   .components-panel__body.is-opened > .components-panel__body-title{
     margin-bottom: 16px;

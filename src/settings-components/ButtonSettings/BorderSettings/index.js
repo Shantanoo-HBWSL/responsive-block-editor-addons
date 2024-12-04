@@ -9,6 +9,8 @@ const { ColorPalette } = wp.blockEditor;
 const { SelectControl, RangeControl, PanelBody } = wp.components;
 
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
+import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
+import RbeaBorderRadiusControl from "../../RbeaBorderRadiusControl";
 
 // Extend component
 const { Component, Fragment } = wp.element;
@@ -24,6 +26,19 @@ class ButtonBorderControl extends Component {
               ctaBorderStyle,
               ctaBorderWidth,
               ctaBorderRadius,
+              ctaBlockTopRadius,
+              ctaBlockRightRadius,
+              ctaBlockBottomRadius,
+              ctaBlockLeftRadius,
+              ctaBlockTopRadiusTablet,
+              ctaBlockRightRadiusTablet,
+              ctaBlockBottomRadiusTablet,
+              ctaBlockLeftRadiusTablet,
+              ctaBlockTopRadiusMobile,
+              ctaBlockRightRadiusMobile,
+              ctaBlockBottomRadiusMobile,
+              ctaBlockLeftRadiusMobile,
+              ctaBlockIsRadiusControlConnected,
           },
           setAttributes,
       } = this.props;
@@ -34,49 +49,10 @@ class ButtonBorderControl extends Component {
               title={__("Border Settings", "responsive-block-editor-addons")}
               initialOpen={false}
           >
-              <SelectControl
-                  label={__("Border Style", "responsive-block-editor-addons")}
-                  value={ctaBorderStyle}
-                  onChange={(value) => setAttributes({ ctaBorderStyle: value })}
-                  options={[
-                      {
-                          value: "none",
-                          label: __("None", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "solid",
-                          label: __("Solid", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "dotted",
-                          label: __("Dotted", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "dashed",
-                          label: __("Dashed", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "double",
-                          label: __("Double", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "groove",
-                          label: __("Groove", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "inset",
-                          label: __("Inset", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "outset",
-                          label: __("Outset", "responsive-block-editor-addons"),
-                      },
-                      {
-                          value: "ridge",
-                          label: __("Ridge", "responsive-block-editor-addons"),
-                      },
-                  ]}
-              />
+                <RbeaBorderStyleTabControl
+                    selected={ctaBorderStyle}
+                    onChange={(value) => setAttributes({ ctaBorderStyle: value })}
+                />
               {"none" != ctaBorderStyle && (
                   <Fragment>
                       <RbeaRangeControl
@@ -91,19 +67,10 @@ class ButtonBorderControl extends Component {
                           max={50}
                           allowReset
                       />
-
-                      <RbeaRangeControl
-                          label={__("Border Radius", "responsive-block-editor-addons")}
-                          value={ctaBorderRadius}
-                          onChange={(value) =>
-                              setAttributes({
-                                  ctaBorderRadius: value !== undefined ? value : 0,
-                              })
-                          }
-                          min={0}
-                          max={100}
-                          allowReset
-                      />
+                        <RbeaBorderRadiusControl
+                            attrNameTemplate="ctaBlock%s"
+                            {...this.props}
+                        />
                   </Fragment>
               )}
           </PanelBody>

@@ -82,16 +82,18 @@ export default function ResponsiveDimensionControl(props) {
 
     function handleOnReset() {
         setControlValues({
-            [`${controlName}${device}Top`]: props.resetValues[`${controlName}${device}Top`],
-            [`${controlName}${device}Right`]: props.resetValues[`${controlName}${device}Right`],
-            [`${controlName}${device}Bottom`]: props.resetValues[`${controlName}${device}Bottom`],
-            [`${controlName}${device}Left`]: props.resetValues[`${controlName}${device}Left`],
+            [`${controlName}${device}Top`]: props.resetValues?.[`${controlName}${device}Top`] ?? 0,
+            [`${controlName}${device}Right`]: props.resetValues?.[`${controlName}${device}Right`] ?? 0,
+            [`${controlName}${device}Bottom`]: props.resetValues?.[`${controlName}${device}Bottom`] ?? 0,
+            [`${controlName}${device}Left`]: props.resetValues?.[`${controlName}${device}Left`] ?? 0,
         });
-        props.setAttributes({ [getAttrName(`Top${controlNameCapitalCase}${device}`)]: props.resetValues[`${controlName}${device}Top`] });
-        props.setAttributes({ [getAttrName(`Right${controlNameCapitalCase}${device}`)]: props.resetValues[`${controlName}${device}Right`] });
-        props.setAttributes({ [getAttrName(`Bottom${controlNameCapitalCase}${device}`)]: props.resetValues[`${controlName}${device}Bottom`] });
-        props.setAttributes({ [getAttrName(`Left${controlNameCapitalCase}${device}`)]: props.resetValues[`${controlName}${device}Left`] });
+    
+        props.setAttributes({ [getAttrName(`Top${controlNameCapitalCase}${device}`)]: props.resetValues?.[`${controlName}${device}Top`] ?? 0 });
+        props.setAttributes({ [getAttrName(`Right${controlNameCapitalCase}${device}`)]: props.resetValues?.[`${controlName}${device}Right`] ?? 0 });
+        props.setAttributes({ [getAttrName(`Bottom${controlNameCapitalCase}${device}`)]: props.resetValues?.[`${controlName}${device}Bottom`] ?? 0 });
+        props.setAttributes({ [getAttrName(`Left${controlNameCapitalCase}${device}`)]: props.resetValues?.[`${controlName}${device}Left`] ?? 0 });
     }
+    
 
     const spacingLinkSpanClasses = classNames(
         'rbea-spacing-control__link',
@@ -106,12 +108,14 @@ export default function ResponsiveDimensionControl(props) {
         },
     );
 
+    let label = props.label ? props.label : controlNameCapitalCase;
+
     return (
         <div className="rbea-spacing-control">
             <div className="rbea-size-type-field-tabs">
                 <div className="rbea-control__header">
                     <div className="uag-responsive-label-wrap">
-                        <span className="uag-control-label">{__(`${controlNameCapitalCase}`, 'responsive-block-editor-addons')}</span>
+                        <span className="uag-control-label">{__(`${label}`, 'responsive-block-editor-addons')}</span>
                     </div>
                     <div className="rbea-control__actions">
                         <div tabIndex="0">

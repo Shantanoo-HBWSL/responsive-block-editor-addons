@@ -905,6 +905,62 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 0,
 				),
+				 'blockTopRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockRightRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockBottomRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockLeftRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockTopRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockRightRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockBottomRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockLeftRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockTopRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockRightRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockBottomRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockLeftRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				  ),
+				  'blockIsRadiusControlConnected' => array(
+					'type' => "boolean",
+					'default' => false,
+				  ),
+				  'blockIsRadiusValueUpdated' => array(
+					'type' => "boolean",
+					'default' => false,
+				  ),
 				'verSpace'               => array(
 					'type'    => 'number',
 					'default' => 0,

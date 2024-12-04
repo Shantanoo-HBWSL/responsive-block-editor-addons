@@ -81,8 +81,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 			if ( is_object( $post ) ) {
 				$blocks = parse_blocks( $post->post_content );
 			}
+			$css = null;
 
-			if ( is_archive() || is_home() || is_search() || is_404() ) {
+			if ( is_archive() || is_home() || is_search() || is_404() || is_singular() ) {
 				if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 					$wp_query_args = array(
 						'post_status' => array( 'publish' ),
@@ -93,14 +94,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 					if ( ! empty( $template_query_posts ) && is_array( $template_query_posts ) ) {
 						foreach ( $template_query_posts as $post ) {
 							if ( is_object( $post ) ) {
-								$blocks = parse_blocks( $post->post_content );
+								$post_blocks = parse_blocks( $post->post_content );
+								$css .= $this->get_styles( $post_blocks );
 							}
 						}
 					}
 				}
 			}
-
-			$css = $this->get_styles( $blocks );
+			if( ! isset( $css ) ) {
+				$css = $this->get_styles( $blocks );
+			}
 			echo "<style id='rbea-frontend-styles'>$css</style>"; //phpcs:ignore
 		}
 
@@ -148,7 +151,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 
 						}
 					} else {
-						// error_log( print_r( $block, true ) );
 						$css = $this->get_block_css( $block );
 
 						// Get CSS for the Block.

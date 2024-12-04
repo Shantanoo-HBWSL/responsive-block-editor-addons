@@ -411,6 +411,62 @@ const attributes = {
     type: "number",
     default: 12,
   },
+  blockTopRadius: {
+    type: "number",
+    default: 12,
+  },
+  blockRightRadius: {
+    type: "number",
+    default: 12,
+  },
+  blockBottomRadius: {
+    type: "number",
+    default: 12,
+  },
+  blockLeftRadius: {
+    type: "number",
+    default: 12,
+  },
+  blockTopRadiusTablet: {
+    type: "number",
+    default: 12,
+  },
+  blockRightRadiusTablet: {
+    type: "number",
+    default: 12,
+  },
+  blockBottomRadiusTablet: {
+    type: "number",
+    default: 12,
+  },
+  blockLeftRadiusTablet: {
+    type: "number",
+    default: 12,
+  },
+  blockTopRadiusMobile: {
+    type: "number",
+    default: 12,
+  },
+  blockRightRadiusMobile: {
+    type: "number",
+    default: 12,
+  },
+  blockBottomRadiusMobile: {
+    type: "number",
+    default: 12,
+  },
+  blockLeftRadiusMobile: {
+    type: "number",
+    default: 12,
+  },
+  blockIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   ctaVpaddingMobile: {
     type: "number",
   },
@@ -427,6 +483,58 @@ const attributes = {
     type: "string",
     default: 4,
   },
+  ctaBlockTopRadius: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockRightRadius: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockBottomRadius: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockLeftRadius: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockTopRadiusTablet: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockRightRadiusTablet: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockBottomRadiusTablet: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockLeftRadiusTablet: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockTopRadiusMobile: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockRightRadiusMobile: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockBottomRadiusMobile: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockLeftRadiusMobile: {
+    type: "number",
+    default: 4,
+  },
+  ctaBlockIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   ctaTextOpacity: {
     type: "number",
     default: 100,

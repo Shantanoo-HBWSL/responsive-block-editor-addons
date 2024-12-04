@@ -83,6 +83,62 @@ const attributes = {
     type: "number",
     default: 2,
   },
+  itemTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  itemRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  itemBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  itemLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  itemTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  itemRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  itemBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  itemLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  itemTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  itemRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  itemBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  itemLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  itemIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  itemIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   itemPadding: {
     type: "number",
     default: 20,

@@ -53,6 +53,18 @@ function EditorStyles(props) {
     testimonialFontSize,
     testimonialCiteAlign,
     blockBorderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
     blockBorderColor,
     blockBorderWidth,
     blockBorderStyle,
@@ -221,7 +233,10 @@ function EditorStyles(props) {
       color: testimonialTextColor,
       "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle,//For compatibility with v1.3.2
       "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"),//For compatibility with v1.3.2
-      "border-radius": borderRadius !== 999 && blockBorderRadius === 2 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor,//For compatibility with v1.3.2
     },
   };
@@ -269,6 +284,17 @@ function EditorStyles(props) {
           height: generateCSSUnit(imageWidthMobile, "px"),
           width: generateCSSUnit(imageWidthMobile, "px"),
       },
+      " .responsive-block-editor-addons-block-testimonial": {
+      "background-image": bggradient,
+      "background-size": backgroundSize,
+      "background-repeat": backgroundRepeat,
+      "background-position": backgroundPosition,
+      color: testimonialTextColor,
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -314,6 +340,10 @@ function EditorStyles(props) {
           height: generateCSSUnit(imageWidthTablet, "px"),
           width: generateCSSUnit(imageWidthTablet, "px"),
       },
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
   };
 
   var styling_css = "";

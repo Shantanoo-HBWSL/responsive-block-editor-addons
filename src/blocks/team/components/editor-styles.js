@@ -51,6 +51,20 @@ function EditorStyles(props) {
     borderColor,
     borderWidth,
     borderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
+    blockIsRadiusControlConnected,
+    blockIsRadiusValueUpdated,
     padding,
     alignment,
     boxShadowColor,
@@ -86,6 +100,20 @@ function EditorStyles(props) {
     iconBackgroundSize,
     iconBorderSize,
     iconBorderRadius,
+    iconTopRadius,
+    iconRightRadius,
+    iconBottomRadius,
+    iconLeftRadius,
+    iconTopRadiusTablet,
+    iconRightRadiusTablet,
+    iconBottomRadiusTablet,
+    iconLeftRadiusTablet,
+    iconTopRadiusMobile,
+    iconRightRadiusMobile,
+    iconBottomRadiusMobile,
+    iconLeftRadiusMobile,
+    iconIsRadiusControlConnected,
+    iconIsRadiusValueUpdated,
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
@@ -284,7 +312,10 @@ function EditorStyles(props) {
       "padding": generateCSSUnit(iconBackgroundSize, 'px'),
       "background-color": socialIconBackgroundColor,
       "border": generateCSSUnit(iconBorderSize,'px') + ' solid ' + socialIconBorderColor,
-      "border-radius": generateCSSUnit(iconBorderRadius, '%')
+      "border-top-left-radius": generateCSSUnit(iconTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(iconRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(iconBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(iconLeftRadius, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons li:hover a": {
@@ -304,7 +335,10 @@ function EditorStyles(props) {
       "background-attachment": backgroundAttachment,
       "border-width": generateCSSUnit(borderWidth, "px"),
       "border-color": borderColor,
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "padding": generateCSSUnit(padding, "px"),
       "text-align": alignment,
       "box-shadow":
@@ -336,6 +370,10 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-team": {
         "margin-bottom": gutterMargin,
+        "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidthMobile, "px"),
@@ -362,6 +400,13 @@ function EditorStyles(props) {
 	  "font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
     },
 
+    " .responsive-block-editor-addons-team-social-icons a": {
+      "border-top-left-radius": generateCSSUnit(iconTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(iconRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(iconBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(iconLeftRadiusMobile, "px"),
+    },
+
     " .responsive-block-editor-addons-team-social-icons.edit-block a": {
       "margin-left": generateCSSUnit(socialIconSpacingMobile, "px"),
       "margin-right": generateCSSUnit(socialIconSpacingMobile, "px"),
@@ -382,6 +427,10 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-team": {
       "margin-bottom": gutterMargin,
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidthTablet, "px"),
@@ -407,7 +456,12 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
 	  "font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
     },
-
+    " .responsive-block-editor-addons-team-social-icons a": {
+      "border-top-left-radius": generateCSSUnit(iconTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(iconRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(iconBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(iconLeftRadiusTablet, "px"),
+    },
     " .responsive-block-editor-addons-team-social-icons.edit-block a": {
       "margin-left": generateCSSUnit(socialIconSpacingTablet, "px"),
       "margin-right": generateCSSUnit(socialIconSpacingTablet, "px"),

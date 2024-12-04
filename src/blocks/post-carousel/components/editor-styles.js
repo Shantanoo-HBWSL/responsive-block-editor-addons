@@ -24,6 +24,18 @@ function EditorStyles(props) {
     arrowSize,
     arrowBorderSize,
     arrowBorderRadius,
+    arrowTopRadius,
+    arrowRightRadius,
+    arrowBottomRadius,
+    arrowLeftRadius,
+    arrowTopRadiusTablet,
+    arrowRightRadiusTablet,
+    arrowBottomRadiusTablet,
+    arrowLeftRadiusTablet,
+    arrowTopRadiusMobile,
+    arrowRightRadiusMobile,
+    arrowBottomRadiusMobile,
+    arrowLeftRadiusMobile,
     blockAlign,
     titleColor,
     contentColor,
@@ -126,7 +138,24 @@ function EditorStyles(props) {
   var slickButtonStyles = {
     "border-color": arrowDotsColor,
     "border-width": generateCSSUnit(arrowBorderSize, "px"),
-    "border-radius": generateCSSUnit(arrowBorderRadius, "px"),
+    "border-top-left-radius": generateCSSUnit(arrowTopRadius, "px"),
+    "border-top-right-radius": generateCSSUnit(arrowRightRadius, "px"),
+    "border-bottom-right-radius": generateCSSUnit(arrowBottomRadius, "px"),
+    "border-bottom-left-radius": generateCSSUnit(arrowLeftRadius, "px"),
+  };
+
+  var slickButtonStylesMobile = {
+    "border-top-left-radius": generateCSSUnit(arrowTopRadiusMobile, "px"),
+    "border-top-right-radius": generateCSSUnit(arrowRightRadiusMobile, "px"),
+    "border-bottom-right-radius": generateCSSUnit(arrowBottomRadiusMobile, "px"),
+    "border-bottom-left-radius": generateCSSUnit(arrowLeftRadiusMobile, "px"),
+  };
+
+  var slickButtonStylesTablet = {
+    "border-top-left-radius": generateCSSUnit(arrowTopRadiusTablet, "px"),
+    "border-top-right-radius": generateCSSUnit(arrowRightRadiusTablet, "px"),
+    "border-bottom-right-radius": generateCSSUnit(arrowBottomRadiusTablet, "px"),
+    "border-bottom-left-radius": generateCSSUnit(arrowLeftRadiusTablet, "px"),
   };
 
   let backgroundImageGradient = "";
@@ -296,6 +325,8 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
     },
+    " .responsive-post-slick-carousel .slick-next.slick-arrow": slickButtonStylesMobile,
+    " .responsive-post-slick-carousel .slick-prev.slick-arrow": slickButtonStylesMobile,
     " .responsive-post-slick-carousel .slick-slide>div:first-child": {
       "margin-left": generateCSSUnit(columnGapMobile / 2, "px"),
       "margin-right": generateCSSUnit(columnGapMobile / 2, "px"),
@@ -329,6 +360,8 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
       "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
     },
+    " .responsive-post-slick-carousel .slick-next.slick-arrow": slickButtonStylesTablet,
+    " .responsive-post-slick-carousel .slick-prev.slick-arrow": slickButtonStylesTablet,
     " .responsive-post-slick-carousel .slick-slide>div:first-child": {
       "margin-left": generateCSSUnit(columnGapTablet / 2, "px"),
       "margin-right": generateCSSUnit(columnGapTablet / 2, "px"),

@@ -400,53 +400,61 @@ const attributes = {
       type: "number",
       default: 1,
     },
-  parentBlockBorderTopLeftRadius: {
+  parentBlockBorderTopRadius: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderTopLeftRadiusMobile: {
+  parentBlockBorderTopRadiusMobile: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderTopLeftRadiusTablet: {
+  parentBlockBorderTopRadiusTablet: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderTopRightRadius: {
+  parentBlockBorderRightRadius: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderTopRightRadiusMobile: {
+  parentBlockBorderRightRadiusMobile: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderTopRightRadiusTablet: {
+  parentBlockBorderRightRadiusTablet: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderBottomLeftRadius: {
+  parentBlockBorderLeftRadius: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderBottomLeftRadiusMobile: {
+  parentBlockBorderLeftRadiusMobile: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderBottomLeftRadiusTablet: {
+  parentBlockBorderLeftRadiusTablet: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderBottomRightRadius: {
+  parentBlockBorderBottomRadius: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderBottomRightRadiusMobile: {
+  parentBlockBorderBottomRadiusMobile: {
     type: "number",
     default: 0,
   },
-  parentBlockBorderBottomRightRadiusTablet: {
+  parentBlockBorderBottomRadiusTablet: {
     type: "number",
     default: 0,
+  },
+  parentBlockBorderBottomIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  parentBlockBorderBottomIsRadiusValueUpdated: {
+  type: "boolean",
+  default: false,
   },
   parentBlockBorderColor: {
     type: "string",

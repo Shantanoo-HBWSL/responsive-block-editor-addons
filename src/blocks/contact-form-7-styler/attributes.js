@@ -312,6 +312,58 @@ const attributes = {
     type: "number",
     default: 0
   },
+  formTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  formRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  formBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  formLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  formTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   formBorderStyle: {
     type: "string",
     default: "none"
@@ -451,6 +503,58 @@ const attributes = {
   inputBorderRadius: {
     type: "number",
   },
+  inputTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  inputRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  inputBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  inputLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  inputTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  inputRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  inputBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  inputLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  inputTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  inputRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  inputBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  inputLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  inputIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   inputBorderColor: {
     type: "string",
   },
@@ -707,6 +811,114 @@ const attributes = {
     type: "number",
     default: 0
   },
+  checkboxBorderTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  checkboxBorderIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  checkboxBorderIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  radioButtonBorderTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  radioButtonBorderIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   //Submit Button Typography
   submitButtonFontFamily: {
     type: "string"
@@ -792,6 +1004,62 @@ const attributes = {
   ctaBorderRadius: {
     type: "number",
     default: 0,
+  },
+  ctaTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  ctaIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
   },
   ctaBorderWidth: {
     type: "number",
@@ -1046,7 +1314,58 @@ const attributes = {
   afterSubmitLeftPaddingTablet: {
     type: "number",
     default: 15,
+  },afterSubmitTopRadius: {
+    type: "number",
+    default: 0,
   },
+  afterSubmitRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   afterSubmitRightPaddingTablet: {
     type: "number",
     default: 15,
@@ -1058,6 +1377,58 @@ const attributes = {
     type: "number",
     default: 0
   },
+  afterSubmitTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  afterSubmitIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   afterSubmitBorderStyle: {
     type: "string",
     default: "none"

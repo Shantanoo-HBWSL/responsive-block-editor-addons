@@ -27,6 +27,18 @@ function EditorStyles(props) {
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
     blockBorderColor,
     borderStyle, // For compatibility with v1.3.2.
     borderWidth, // For compatibility with v1.3.2.
@@ -314,7 +326,10 @@ function EditorStyles(props) {
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
-      "border-radius": borderRadius !== 999 && !blockBorderRadius ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -362,7 +377,10 @@ function EditorStyles(props) {
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
-      "border-radius": borderRadius !== 999 && !blockBorderRadius ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -473,12 +491,20 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(frontBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(frontLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(frontRightPaddingMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
       "padding-top": generateCSSUnit(backTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(backBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(backLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(backRightPaddingMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       "font-size": generateCSSUnit(frontTitleFontSizeMobile, "px"),
@@ -521,12 +547,20 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(frontBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(frontLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(frontRightPaddingTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
       "padding-top": generateCSSUnit(backTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(backBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(backLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(backRightPaddingTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       "font-size": generateCSSUnit(frontTitleFontSizeTablet, "px"),

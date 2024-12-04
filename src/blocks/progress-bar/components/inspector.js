@@ -7,6 +7,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 
 /**
  * Inspector Controls
@@ -82,7 +83,21 @@ export default class Inspector extends Component {
 				horizontalProgressBarTopTitleValueColor,
 				horizontalProgressBarInnerTitleValueColor,
 				horizontalProgressBarBottomTitleValueColor,
-				horizontalProgressBarBorderRadius,
+				horizontalProgressBarBorderRadius, 
+				horizontalProgressBarTopRadius,
+				horizontalProgressBarRightRadius,
+				horizontalProgressBarBottomRadius,
+				horizontalProgressBarLeftRadius,
+				horizontalProgressBarTopRadiusTablet,
+				horizontalProgressBarRightRadiusTablet,
+				horizontalProgressBarBottomRadiusTablet,
+				horizontalProgressBarLeftRadiusTablet,
+				horizontalProgressBarTopRadiusMobile,
+				horizontalProgressBarRightRadiusMobile,
+				horizontalProgressBarBottomRadiusMobile,
+				horizontalProgressBarLeftRadiusMobile,
+				horizontalProgressBarIsRadiusControlConnected,
+				horizontalProgressBarIsRadiusValueUpdated,
 				horizontalProgressBarBorderStyle,
 				horizontalProgressBarBorderWidth,
 				horizontalProgressBarBorderColor,
@@ -254,6 +269,28 @@ export default class Inspector extends Component {
 		const onChangeSemiCircularProgressBarTrackColor = (value) => {
 			setAttributes({ semiCircularProgressBarTrackColor: value });
 		}
+
+		// backward compatibility for border radius control
+
+	if (!horizontalProgressBarIsRadiusValueUpdated) {
+		this.props.setAttributes(
+		{
+			horizontalProgressBarTopRadius:          horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarTopRadius,
+			horizontalProgressBarBottomRadius:       horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarBottomRadius,
+			horizontalProgressBarLeftRadius:         horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarLeftRadius,
+			horizontalProgressBarRightRadius:        horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarRightRadius,
+			horizontalProgressBarTopRadiusTablet:    horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarTopRadiusTablet,
+			horizontalProgressBarBottomRadiusTablet: horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarBottomRadiusTablet,
+			horizontalProgressBarRightRadiusTablet:  horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarRightRadiusTablet,
+			horizontalProgressBarLeftRadiusTablet:   horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarLeftRadiusTablet,
+			horizontalProgressBarTopRadiusMobile:    horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarTopRadiusMobile,
+			horizontalProgressBarBottomRadiusMobile: horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarBottomRadiusMobile,
+			horizontalProgressBarLeftRadiusMobile:   horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarLeftRadiusMobile,
+			horizontalProgressBarRightRadiusMobile:  horizontalProgressBarBorderRadius !== undefined ? horizontalProgressBarBorderRadius : horizontalProgressBarRightRadiusMobile,
+		}
+		)
+		this.props.setAttributes({horizontalProgressBarIsRadiusValueUpdated: true});
+	}
 
 		return (
 			<InspectorControls key="inspector">
@@ -852,7 +889,7 @@ export default class Inspector extends Component {
 								title={__("Border", "responsive-block-editor-addons")}
 								initialOpen={false}
 							>
-								<BlockBorderHelperControl
+								<RbeaBlockBorderHelperControl
 									attrNameTemplate="horizontalProgressBar%s"
 									values={{
 										radius: horizontalProgressBarBorderRadius,

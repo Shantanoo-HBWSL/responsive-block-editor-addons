@@ -115,6 +115,18 @@ function EditorStyles(props) {
   blockRightPadding,
   blockRightPaddingMobile,
   blockRightPaddingTablet,
+  blockTopRadius,
+  blockRightRadius,
+  blockBottomRadius,
+  blockLeftRadius,
+  blockTopRadiusTablet,
+  blockRightRadiusTablet,
+  blockBottomRadiusTablet,
+  blockLeftRadiusTablet,
+  blockTopRadiusMobile,
+  blockRightRadiusMobile,
+  blockBottomRadiusMobile,
+  blockLeftRadiusMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -208,7 +220,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-timeline__events-new .responsive-block-editor-addons-timeline__events-inner-new": {
       "background-color": bgColor ? bgColor : "#e4e4e4",
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
     },
     " .responsive-block-editor-addons-timeline__date-hide.responsive-block-editor-addons-timeline__date-inner .responsive-block-editor-addons-timeline__date-new": {
       "line-height": dateLineHeight,
@@ -338,6 +353,12 @@ function EditorStyles(props) {
 	".responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new": {
 		"margin-right": generateCSSUnit(horSpaceMobile, "px"),
 	},
+  " .responsive-block-editor-addons-timeline__events-new .responsive-block-editor-addons-timeline__events-inner-new": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -406,6 +427,12 @@ function EditorStyles(props) {
 	".responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new": {
 		"margin-right": generateCSSUnit(horSpaceTablet, "px"),
 	},
+  " .responsive-block-editor-addons-timeline__events-new .responsive-block-editor-addons-timeline__events-inner-new": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
   };
 
   var styling_css = "";

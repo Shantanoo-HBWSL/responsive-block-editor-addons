@@ -21,6 +21,18 @@ function EditorStyles(props) {
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
     blockBorderColor,
     backgroundColor,
     backgroundColor1,
@@ -310,7 +322,10 @@ function EditorStyles(props) {
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-color": blockBorderColor,
       "border-style": blockBorderStyle,
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(
@@ -402,6 +417,10 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(columnBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(columnLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(columnRightPaddingMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
       " .responsive-block-editor-addons-feature-image-wrap": {
           "margin-bottom": generateCSSUnit(imageSpaceMobile, "px"),
@@ -444,6 +463,11 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(columnBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(columnLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(columnRightPaddingTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+      
     },
       " .responsive-block-editor-addons-feature-image-wrap": {
           "margin-bottom": generateCSSUnit(imageSpaceTablet, "px"),

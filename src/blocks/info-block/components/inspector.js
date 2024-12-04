@@ -24,6 +24,8 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -245,6 +247,20 @@ export default class Inspector extends Component {
         blockBorderStyle,
         blockBorderWidth,
         blockBorderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusControlConnected,
+        blockIsRadiusValueUpdated,
         blockBorderColor,
         boxShadowColor,
         boxShadowHOffset,
@@ -279,6 +295,20 @@ export default class Inspector extends Component {
         icon_hcolor,
         resImageBorderColor,
         resImageBorderRadius,
+        resImageTopRadius,
+        resImageTopRadiusMobile,
+        resImageTopRadiusTablet,
+        resImageRightRadius,
+        resImageRightRadiusMobile,
+        resImageRightRadiusTablet,
+        resImageBottomRadius,
+        resImageBottomRadiusMobile,
+        resImageBottomRadiusTablet,
+        resImageLeftRadius,
+        resImageLeftRadiusMobile,
+        resImageLeftRadiusTablet,
+        resImageIsRadiusControlConnected,
+        resImageIsRadiusValueUpdated,
         resImageBorderWidth,
         resImageBorderStyle,
         alignment,
@@ -304,6 +334,20 @@ export default class Inspector extends Component {
         iconBackgroundHoverColor,
         iconBackgroundType,
         iconBorderRadius,
+        iconTopRadius,
+        iconRightRadius,
+        iconBottomRadius,
+        iconLeftRadius,
+        iconTopRadiusTablet,
+        iconRightRadiusTablet,
+        iconBottomRadiusTablet,
+        iconLeftRadiusTablet,
+        iconTopRadiusMobile,
+        iconRightRadiusMobile,
+        iconBottomRadiusMobile,
+        iconLeftRadiusMobile,
+        iconIsRadiusControlConnected,
+        iconIsRadiusValueUpdated,
         iconBorderWidth,
         iconPadding,
         backgroundImage,
@@ -541,12 +585,9 @@ export default class Inspector extends Component {
               onChange={(colorValue) => setAttributes({ iconBackgroundHoverColor: colorValue })}
               resetColor={() => setAttributes({ iconBackgroundHoverColor: "" })}
             />
-            <RbeaRangeControl
-              label={__("Icon Border Radius", "responsive-block-editor-addons")}
-              value={iconBorderRadius}
-              onChange={(value) => setAttributes({ iconBorderRadius: value })}
-              min={0}
-              max={100}
+            <RbeaBorderRadiusControl
+              attrNameTemplate="icon%s"
+              {...this.props}
             />
             <RbeaRangeControl
               label={__("Icon Border Width", "responsive-block-editor-addons")}
@@ -581,15 +622,9 @@ export default class Inspector extends Component {
               onChange={(colorValue) => setAttributes({ iconBackgroundHoverColor: colorValue })}
               resetColor={() => setAttributes({ iconBackgroundHoverColor: "" })}
             />
-            <RbeaRangeControl
-              label={__(
-                "Icon Background  Radius",
-                "responsive-block-editor-addons"
-              )}
-              value={iconBorderRadius}
-              onChange={(value) => setAttributes({ iconBorderRadius: value })}
-              min={0}
-              max={100}
+            <RbeaBorderRadiusControl
+              attrNameTemplate="icon%s"
+              {...this.props}
             />
             <RbeaRangeControl
               label={__(
@@ -693,7 +728,7 @@ export default class Inspector extends Component {
           <RbeaMediaUploadControl
             label={__("Image", "responsive-block-editor-addons")}
             value={{
-                url: iconImage.url,
+              url: iconImage? iconImage.url : '',
             }}
             onChange={this.onSelectImage}
             mediaType={'image'}
@@ -826,7 +861,7 @@ export default class Inspector extends Component {
               )}
               initialOpen={false}
             >
-                <BlockBorderHelperControl
+                <RbeaBlockBorderHelperControl
                     attrNameTemplate="resImage%s"
                     values={{ radius: resImageBorderRadius, style: resImageBorderStyle, width: resImageBorderWidth, color: resImageBorderColor }}
                     setAttributes={setAttributes}
@@ -843,6 +878,72 @@ export default class Inspector extends Component {
         )}
       </Fragment>
     );
+
+    // backward compatibility for border radius control
+
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadius,
+          blockBottomRadius:       blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadius,
+          blockLeftRadius:         blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadius,
+          blockRightRadius:        blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadius,
+          blockTopRadiusTablet:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for image border radius control
+
+    if (!resImageIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          resImageTopRadius:          resImageBorderRadius !== undefined ? resImageBorderRadius : resImageTopRadius,
+          resImageRightRadius:        resImageBorderRadius !== undefined ? resImageBorderRadius : resImageRightRadius,
+          resImageBottomRadius:       resImageBorderRadius !== undefined ? resImageBorderRadius : resImageBottomRadius,
+          resImageLeftRadius:         resImageBorderRadius !== undefined ? resImageBorderRadius : resImageLeftRadius,
+          resImageTopRadiusTablet:    resImageBorderRadius !== undefined ? resImageBorderRadius : resImageTopRadiusTablet,
+          resImageRightRadiusTablet:  resImageBorderRadius !== undefined ? resImageBorderRadius : resImageRightRadiusTablet,
+          resImageLeftRadiusTablet:   resImageBorderRadius !== undefined ? resImageBorderRadius : resImageLeftRadiusTablet,
+          resImageBottomRadiusTablet: resImageBorderRadius !== undefined ? resImageBorderRadius : resImageBottomRadiusTablet,
+          resImageTopRadiusMobile:    resImageBorderRadius !== undefined ? resImageBorderRadius : resImageTopRadiusMobile,
+          resImageRightRadiusMobile:  resImageBorderRadius !== undefined ? resImageBorderRadius : resImageRightRadiusMobile,
+          resImageBottomRadiusMobile: resImageBorderRadius !== undefined ? resImageBorderRadius : resImageBottomRadiusMobile,
+          resImageLeftRadiusMobile:   resImageBorderRadius !== undefined ? resImageBorderRadius : resImageLeftRadiusMobile,
+        }
+      )
+      this.props.setAttributes({resImageIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for icon border radius control
+
+    if (!iconIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          iconTopRadius:          iconBorderRadius !== undefined ? iconBorderRadius : iconTopRadius,
+          iconBottomRadius:       iconBorderRadius !== undefined ? iconBorderRadius : iconBottomRadius,
+          iconLeftRadius:         iconBorderRadius !== undefined ? iconBorderRadius : iconLeftRadius,
+          iconRightRadius:        iconBorderRadius !== undefined ? iconBorderRadius : iconRightRadius,
+          iconTopRadiusTablet:    iconBorderRadius !== undefined ? iconBorderRadius : iconTopRadiusTablet,
+          iconBottomRadiusTablet: iconBorderRadius !== undefined ? iconBorderRadius : iconBottomRadiusTablet,
+          iconRightRadiusTablet:  iconBorderRadius !== undefined ? iconBorderRadius : iconRightRadiusTablet,
+          iconLeftRadiusTablet:   iconBorderRadius !== undefined ? iconBorderRadius : iconLeftRadiusTablet,
+          iconTopRadiusMobile:    iconBorderRadius !== undefined ? iconBorderRadius : iconTopRadiusMobile,
+          iconBottomRadiusMobile: iconBorderRadius !== undefined ? iconBorderRadius : iconBottomRadiusMobile,
+          iconLeftRadiusMobile:   iconBorderRadius !== undefined ? iconBorderRadius : iconLeftRadiusMobile,
+          iconRightRadiusMobile:  iconBorderRadius !== undefined ? iconBorderRadius : iconRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({iconIsRadiusValueUpdated: true});
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -1135,9 +1236,14 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                <BlockBorderHelperControl
+                <RbeaBlockBorderHelperControl
                     attrNameTemplate="block%s"
-                    values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
+                    values={{
+                        radius: blockBorderRadius,
+                        style: blockBorderStyle,
+                        width: blockBorderWidth,
+                        color: blockBorderColor,
+                    }}
                     setAttributes={setAttributes}
                     {...this.props}
                 />

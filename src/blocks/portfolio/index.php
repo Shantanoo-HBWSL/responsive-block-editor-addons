@@ -549,6 +549,62 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'number',
 					'default' => '',
 				),				
+				'blockTopRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockRightRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBottomRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockLeftRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockTopRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockRightRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBottomRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockLeftRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockTopRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockRightRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBottomRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockLeftRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockIsRadiusControlConnected'           => array(
+					'type'    => 'boolean',
+					'default' => 'false',
+				),
+				'blockIsRadiusValueUpdated'           => array(
+					'type'    => 'boolean',
+					'default' => 'false',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts_portfolio',
 		)

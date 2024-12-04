@@ -14,6 +14,8 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
+import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 /**
  * Inspector Controls
@@ -251,6 +253,34 @@ export default class Inspector extends Component {
         headingBorderTopRightRadiusTablet,
         headingBorderBottomLeftRadiusTablet,
         headingBorderBottomRightRadiusTablet,
+        headingBorderTopRadius,
+        headingBorderRightRadius,
+        headingBorderBottomRadius,
+        headingBorderLeftRadius,
+        headingBorderTopRadiusMobile,
+        headingBorderRightRadiusMobile,
+        headingBorderBottomRadiusMobile,
+        headingBorderLeftRadiusMobile,
+        headingBorderTopRadiusTablet,
+        headingBorderRightRadiusTablet,
+        headingBorderBottomRadiusTablet,
+        headingBorderLeftRadiusTablet,
+        headingBorderIsRadiusControlConnected,
+        headingBorderIsRadiusValueUpdated,
+        bodyBorderTopRadius,
+        bodyBorderRightRadius,
+        bodyBorderBottomRadius,
+        bodyBorderLeftRadius,
+        bodyBorderTopRadiusMobile,
+        bodyBorderRightRadiusMobile,
+        bodyBorderBottomRadiusMobile,
+        bodyBorderLeftRadiusMobile,
+        bodyBorderTopRadiusTablet,
+        bodyBorderRightRadiusTablet,
+        bodyBorderBottomRadiusTablet,
+        bodyBorderLeftRadiusTablet,
+        bodyBorderIsRadiusControlConnected,
+        bodyBorderIsRadiusValueUpdated,
         blockBorderColor,
         headingBorderStyle,
         headingBorderWidth,
@@ -412,6 +442,50 @@ export default class Inspector extends Component {
       { value: "image", label: __("Image", "responsive-block-editor-addons") },
       { value: "video", label: __("Video", "responsive-block-editor-addons") },
     ];
+
+    // backward compatibility for border radius control 
+
+    if (!headingBorderIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          headingBorderTopRadius:          headingBorderTopLeftRadius !== undefined ? headingBorderTopLeftRadius : headingBorderTopRadius,
+          headingBorderRightRadius:       headingBorderTopRightRadius !== undefined ? headingBorderTopRightRadius : headingBorderBottomRadius,
+          headingBorderLeftRadius:        headingBorderBottomLeftRadius !== undefined ? headingBorderBottomLeftRadius : headingBorderRightRadius,
+          headingBorderBottomRadius:         headingBorderBottomRightRadius !== undefined ? headingBorderBottomRightRadius : headingBorderLeftRadius,
+          headingBorderTopRadiusTablet:    headingBorderTopLeftRadiusTablet !== undefined ? headingBorderTopLeftRadiusTablet : headingBorderTopRadiusTablet,
+          headingBorderRightRadiusTablet:  headingBorderTopRightRadiusTablet !== undefined ? headingBorderTopRightRadiusTablet : headingBorderRightRadiusTablet,
+          headingBorderLeftRadiusTablet:   headingBorderBottomLeftRadiusTablet !== undefined ? headingBorderBottomLeftRadiusTablet : headingBorderLeftRadiusTablet,
+          headingBorderBottomRadiusTablet: headingBorderBottomRightRadiusTablet !== undefined ? headingBorderBottomRightRadiusTablet : headingBorderBottomRadiusTablet,
+          headingBorderTopRadiusMobile:    headingBorderTopLeftRadiusMobile !== undefined ? headingBorderTopLeftRadiusMobile : headingBorderTopRadiusMobile,
+          headingBorderRightRadiusMobile:  headingBorderTopRightRadiusMobile !== undefined ? headingBorderTopRightRadiusMobile : headingBorderRightRadiusMobile,
+          headingBorderLeftRadiusMobile:   headingBorderBottomLeftRadiusMobile !== undefined ? headingBorderBottomLeftRadiusMobile : headingBorderLeftRadiusMobile,
+          headingBorderBottomRadiusMobile: headingBorderBottomRightRadiusMobile !== undefined ? headingBorderBottomRightRadiusMobile : headingBorderBottomRadiusMobile,
+        }
+      )
+      this.props.setAttributes({headingBorderIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for border radius control 
+
+    if (!bodyBorderIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          bodyBorderTopRadius:          bodyBorderTopLeftRadius !== undefined ? bodyBorderTopLeftRadius : bodyBorderTopRadius,
+          bodyBorderRightRadius:       bodyBorderTopRightRadius !== undefined ? bodyBorderTopRightRadius : bodyBorderBottomRadius,
+          bodyBorderLeftRadius:        bodyBorderBottomLeftRadius !== undefined ? bodyBorderBottomLeftRadius : bodyBorderRightRadius,
+          bodyBorderBottomRadius:         bodyBorderBottomRightRadius !== undefined ? bodyBorderBottomRightRadius : bodyBorderLeftRadius,
+          bodyBorderTopRadiusTablet:    bodyBorderTopLeftRadiusTablet !== undefined ? bodyBorderTopLeftRadiusTablet : bodyBorderTopRadiusTablet,
+          bodyBorderRightRadiusTablet:  bodyBorderTopRightRadiusTablet !== undefined ? bodyBorderTopRightRadiusTablet : bodyBorderRightRadiusTablet,
+          bodyBorderLeftRadiusTablet:   bodyBorderBottomLeftRadiusTablet !== undefined ? bodyBorderBottomLeftRadiusTablet : bodyBorderLeftRadiusTablet,
+          bodyBorderBottomRadiusTablet: bodyBorderBottomRightRadiusTablet !== undefined ? bodyBorderBottomRightRadiusTablet : bodyBorderBottomRadiusTablet,
+          bodyBorderTopRadiusMobile:    bodyBorderTopLeftRadiusMobile !== undefined ? bodyBorderTopLeftRadiusMobile : bodyBorderTopRadiusMobile,
+          bodyBorderRightRadiusMobile:  bodyBorderTopRightRadiusMobile !== undefined ? bodyBorderTopRightRadiusMobile : bodyBorderRightRadiusMobile,
+          bodyBorderLeftRadiusMobile:   bodyBorderBottomLeftRadiusMobile !== undefined ? bodyBorderBottomLeftRadiusMobile : bodyBorderLeftRadiusMobile,
+          bodyBorderBottomRadiusMobile: bodyBorderBottomRightRadiusMobile !== undefined ? bodyBorderBottomRightRadiusMobile : bodyBorderBottomRadiusMobile,
+        }
+      )
+      this.props.setAttributes({bodyBorderIsRadiusValueUpdated: true});
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -1230,23 +1304,11 @@ export default class Inspector extends Component {
                 title={__("Border", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <SelectControl
-                  label={__("Border Style")}
-                  value={headingBorderStyle}
+                <RbeaBorderStyleTabControl
+                  selected={headingBorderStyle}
                   onChange={(value) =>
                     setAttributes({ headingBorderStyle: value })
                   }
-                  options={[
-                    { value: "none", label: __("None") },
-                    { value: "solid", label: __("Solid") },
-                    { value: "dotted", label: __("Dotted") },
-                    { value: "dashed", label: __("Dashed") },
-                    { value: "double", label: __("Double") },
-                    { value: "groove", label: __("Groove") },
-                    { value: "inset", label: __("Inset") },
-                    { value: "outset", label: __("Outset") },
-                    { value: "ridge", label: __("Ridge") },
-                  ]}
                 />
                 {"none" != headingBorderStyle && (
                   <Fragment>
@@ -1483,236 +1545,10 @@ export default class Inspector extends Component {
                 </Fragment>
                 )}
                 <br></br>
-                <BaseControl.VisualLabel>
-                    {__("Border Radius:", "responsive-block-editor-addons")}
-                  </BaseControl.VisualLabel>
-                  <br></br>
-                  <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Left (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderTopLeftRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderTopLeftRadiusMobile: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Right (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderTopRightRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderTopRightRadiusMobile: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Left (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderBottomLeftRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderBottomLeftRadiusMobile: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Right (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderBottomRightRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderBottomRightRadiusMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Left(Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderTopLeftRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderTopLeftRadiusTablet: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Right (Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderTopRightRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderTopRightRadiusTablet: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Left (Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderBottomLeftRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderBottomLeftRadiusTablet: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Right (Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderBottomRightRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderBottomRightRadiusTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Left",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderTopLeftRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderTopLeftRadius: value !== undefined ? value : "",
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Right",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderTopRightRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderTopRightRadius: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Left",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderBottomLeftRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderBottomLeftRadius: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Right",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={headingBorderBottomRightRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingBorderBottomRightRadius: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
+                <RbeaBorderRadiusControl
+                  attrNameTemplate="headingBorder%s"
+                  {...this.props}
+                />
                 {"none" != headingBorderStyle && (
                   <Fragment>
                     <RbeaColorControl
@@ -1840,7 +1676,7 @@ export default class Inspector extends Component {
                 <RbeaMediaUploadControl
                 label={__('Video', 'responsive-block-editor-addons')}
                 value={{
-                    url: backgroundVideo.url || '',
+                    url: backgroundVideo? backgroundVideo.url : '',
                 }}
                 onChange={(newValue) => { 
                     setAttributes({
@@ -2376,23 +2212,11 @@ export default class Inspector extends Component {
                 title={__("Border", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <SelectControl
-                  label={__("Border Style")}
-                  value={bodyBorderStyle}
+                <RbeaBorderStyleTabControl
+                  selected={bodyBorderStyle}
                   onChange={(value) =>
                     setAttributes({ bodyBorderStyle: value })
                   }
-                  options={[
-                    { value: "none", label: __("None") },
-                    { value: "solid", label: __("Solid") },
-                    { value: "dotted", label: __("Dotted") },
-                    { value: "dashed", label: __("Dashed") },
-                    { value: "double", label: __("Double") },
-                    { value: "groove", label: __("Groove") },
-                    { value: "inset", label: __("Inset") },
-                    { value: "outset", label: __("Outset") },
-                    { value: "ridge", label: __("Ridge") },
-                  ]}
                 />
                 {"none" != bodyBorderStyle && (
                   <Fragment>
@@ -2629,236 +2453,10 @@ export default class Inspector extends Component {
                 </Fragment>
                 )}
                 <br></br>
-                <BaseControl.VisualLabel>
-                    {__("Border Radius:", "responsive-block-editor-addons")}
-                  </BaseControl.VisualLabel>
-                  <br></br>
-                  <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Left (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderTopLeftRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderTopLeftRadiusMobile: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Right (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderTopRightRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderTopRightRadiusMobile: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Left (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderBottomLeftRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderBottomLeftRadiusMobile: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Right (Mobile)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderBottomRightRadiusMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderBottomRightRadiusMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Left(Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderTopLeftRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderTopLeftRadiusTablet: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Right (Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderTopRightRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderTopRightRadiusTablet: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Left (Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderBottomLeftRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderBottomLeftRadiusTablet: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Right (Tablet)",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderBottomRightRadiusTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderBottomRightRadiusTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Left",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderTopLeftRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderTopLeftRadius: value !== undefined ? value : "",
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Top Right",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderTopRightRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderTopRightRadius: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Left",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderBottomLeftRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderBottomLeftRadius: value,
-                              })
-                            }
-                          />
-                          <RbeaRangeControl
-                            label={__(
-                              "Bottom Right",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={2000}
-                            allowReset
-                            value={bodyBorderBottomRightRadius}
-                            onChange={(value) =>
-                              setAttributes({
-                                bodyBorderBottomRightRadius: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
+                <RbeaBorderRadiusControl
+                  attrNameTemplate="bodyBorder%s"
+                  {...this.props}
+                />
                 {"none" != bodyBorderStyle && (
                   <Fragment>
                     <RbeaColorControl

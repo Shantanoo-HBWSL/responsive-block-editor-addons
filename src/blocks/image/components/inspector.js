@@ -7,6 +7,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 
 const {Component, Fragment} = wp.element;
 const {
@@ -53,6 +54,20 @@ export default class Inspector extends Component {
       captionColor,
       imageBorderColor,
       imageBorderRadius,
+      imageTopRadius,
+      imageRightRadius,
+      imageBottomRadius,
+      imageLeftRadius,
+      imageTopRadiusTablet,
+      imageRightRadiusTablet,
+      imageBottomRadiusTablet,
+      imageLeftRadiusTablet,
+      imageTopRadiusMobile,
+      imageRightRadiusMobile,
+      imageBottomRadiusMobile,
+      imageLeftRadiusMobile,
+      imageIsRadiusControlConnected,
+      imageIsRadiusValueUpdated,
       imageBorderStyle,
       imageBorderWidth,
       imageboxShadowColor,
@@ -107,7 +122,21 @@ export default class Inspector extends Component {
       Layoverswitch,
       LayoverContentPosition,
       layoverimageBorderColor,
-      layoverimageBorderRadius,
+      layoverimageBorderRadius, 
+      layoverimageTopRadius,
+      layoverimageRightRadius,
+      layoverimageBottomRadius,
+      layoverimageLeftRadius,
+      layoverimageTopRadiusTablet,
+      layoverimageRightRadiusTablet,
+      layoverimageBottomRadiusTablet,
+      layoverimageLeftRadiusTablet,
+      layoverimageTopRadiusMobile,
+      layoverimageRightRadiusMobile,
+      layoverimageBottomRadiusMobile,
+      layoverimageLeftRadiusMobile,
+      layoverimageIsRadiusControlConnected,
+      layoverimageIsRadiusValueUpdated,
       layoverimageBorderStyle,
       layoverimageBorderWidth,
       layoverInputDistance,
@@ -330,6 +359,51 @@ export default class Inspector extends Component {
         />
       </Fragment>
     );
+
+    // backward compatibility for border radius control
+
+    if (!layoverimageIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+        layoverimageTopRadius:          layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageTopRadius,
+        layoverimageBottomRadius:       layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageBottomRadius,
+        layoverimageLeftRadius:         layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageLeftRadius,
+        layoverimageRightRadius:        layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageRightRadius,
+        layoverimageTopRadiusTablet:    layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageTopRadiusTablet,
+        layoverimageBottomRadiusTablet: layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageBottomRadiusTablet,
+        layoverimageRightRadiusTablet:  layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageRightRadiusTablet,
+        layoverimageLeftRadiusTablet:   layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageLeftRadiusTablet,
+        layoverimageTopRadiusMobile:    layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageTopRadiusMobile,
+        layoverimageBottomRadiusMobile: layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageBottomRadiusMobile,
+        layoverimageLeftRadiusMobile:   layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageLeftRadiusMobile,
+        layoverimageRightRadiusMobile:  layoverimageBorderRadius !== undefined ? layoverimageBorderRadius : layoverimageRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({layoverimageIsRadiusValueUpdated: true});
+      }
+
+      // backward compatibility for border radius control
+
+if (!imageIsRadiusValueUpdated) {
+	this.props.setAttributes(
+	  {
+		imageTopRadius:          imageBorderRadius !== undefined ? imageBorderRadius : imageTopRadius,
+		imageBottomRadius:       imageBorderRadius !== undefined ? imageBorderRadius : imageBottomRadius,
+		imageLeftRadius:         imageBorderRadius !== undefined ? imageBorderRadius : imageLeftRadius,
+		imageRightRadius:        imageBorderRadius !== undefined ? imageBorderRadius : imageRightRadius,
+		imageTopRadiusTablet:    imageBorderRadius !== undefined ? imageBorderRadius : imageTopRadiusTablet,
+		imageBottomRadiusTablet: imageBorderRadius !== undefined ? imageBorderRadius : imageBottomRadiusTablet,
+		imageRightRadiusTablet:  imageBorderRadius !== undefined ? imageBorderRadius : imageRightRadiusTablet,
+		imageLeftRadiusTablet:   imageBorderRadius !== undefined ? imageBorderRadius : imageLeftRadiusTablet,
+		imageTopRadiusMobile:    imageBorderRadius !== undefined ? imageBorderRadius : imageTopRadiusMobile,
+		imageBottomRadiusMobile: imageBorderRadius !== undefined ? imageBorderRadius : imageBottomRadiusMobile,
+		imageLeftRadiusMobile:   imageBorderRadius !== undefined ? imageBorderRadius : imageLeftRadiusMobile,
+		imageRightRadiusMobile:  imageBorderRadius !== undefined ? imageBorderRadius : imageRightRadiusMobile,
+	  }
+	)
+	this.props.setAttributes({imageIsRadiusValueUpdated: true});
+  }
+
     return (
       <InspectorControls key="inspector">
         <InspectorTabs>
@@ -866,7 +940,7 @@ export default class Inspector extends Component {
                     },
                   ]}
                 />
-                <BlockBorderHelperControl
+                <RbeaBlockBorderHelperControl
                   attrNameTemplate="layoverimage%s"
                   values={{
                     radius: layoverimageBorderRadius,
@@ -1069,7 +1143,7 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody title="Image" initialOpen={true}>
-              <BlockBorderHelperControl
+              <RbeaBlockBorderHelperControl
                 attrNameTemplate="image%s"
                 values={{
                   radius: imageBorderRadius,

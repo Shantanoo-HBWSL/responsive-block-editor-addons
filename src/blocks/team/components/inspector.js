@@ -16,6 +16,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -166,6 +167,34 @@ export default class Inspector extends Component {
         borderColor,
         borderWidth,
         borderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusControlConnected,
+        blockIsRadiusValueUpdated,
+        iconTopRadius,
+        iconRightRadius,
+        iconBottomRadius,
+        iconLeftRadius,
+        iconTopRadiusTablet,
+        iconRightRadiusTablet,
+        iconBottomRadiusTablet,
+        iconLeftRadiusTablet,
+        iconTopRadiusMobile,
+        iconRightRadiusMobile,
+        iconBottomRadiusMobile,
+        iconLeftRadiusMobile,
+        iconIsRadiusControlConnected,
+        iconIsRadiusValueUpdated,
         padding,
         imageShape,
         boxShadowColor,
@@ -397,6 +426,48 @@ export default class Inspector extends Component {
       );
     };
 
+    // backward compatibility for border radius control 
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          borderRadius !== undefined ? borderRadius : blockTopRadius,
+          blockBottomRadius:       borderRadius !== undefined ? borderRadius : blockBottomRadius,
+          blockLeftRadius:         borderRadius !== undefined ? borderRadius : blockLeftRadius,
+          blockRightRadius:        borderRadius !== undefined ? borderRadius : blockRightRadius,
+          blockTopRadiusTablet:    borderRadius !== undefined ? borderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: borderRadius !== undefined ? borderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  borderRadius !== undefined ? borderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   borderRadius !== undefined ? borderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    borderRadius !== undefined ? borderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: borderRadius !== undefined ? borderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   borderRadius !== undefined ? borderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  borderRadius !== undefined ? borderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for border radius control 
+    if (!iconIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          iconTopRadius:          iconBorderRadius !== undefined ? iconBorderRadius : iconTopRadius,
+          iconBottomRadius:       iconBorderRadius !== undefined ? iconBorderRadius : iconBottomRadius,
+          iconLeftRadius:         iconBorderRadius !== undefined ? iconBorderRadius : iconLeftRadius,
+          iconRightRadius:        iconBorderRadius !== undefined ? iconBorderRadius : iconRightRadius,
+          iconTopRadiusTablet:    iconBorderRadius !== undefined ? iconBorderRadius : iconTopRadiusTablet,
+          iconBottomRadiusTablet: iconBorderRadius !== undefined ? iconBorderRadius : iconBottomRadiusTablet,
+          iconRightRadiusTablet:  iconBorderRadius !== undefined ? iconBorderRadius : iconRightRadiusTablet,
+          iconLeftRadiusTablet:   iconBorderRadius !== undefined ? iconBorderRadius : iconLeftRadiusTablet,
+          iconTopRadiusMobile:    iconBorderRadius !== undefined ? iconBorderRadius : iconTopRadiusMobile,
+          iconBottomRadiusMobile: iconBorderRadius !== undefined ? iconBorderRadius : iconBottomRadiusMobile,
+          iconLeftRadiusMobile:   iconBorderRadius !== undefined ? iconBorderRadius : iconLeftRadiusMobile,
+          iconRightRadiusMobile:  iconBorderRadius !== undefined ? iconBorderRadius : iconRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({iconIsRadiusValueUpdated: true});
+    }
+
     return (
       <InspectorControls key="inspector">
         <InspectorTabs>
@@ -511,17 +582,9 @@ export default class Inspector extends Component {
                 max={50}
                 step={1}
               />
-              <RbeaRangeControl
-                label={__("Border Radius", "responsive-block-editor-addons")}
-                value={borderRadius}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    borderRadius: value,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
+              <RbeaBorderRadiusControl
+                attrNameTemplate="block%s"
+                {...this.props}
               />
               <RbeaRangeControl
                 label={__("Padding", "responsive-block-editor-addons")}
@@ -760,17 +823,9 @@ export default class Inspector extends Component {
                 max={100}
                 step={1}
               />
-              <RbeaRangeControl
-                label={__("Border Radius", "responsive-block-editor-addons")}
-                value={iconBorderRadius}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    iconBorderRadius: value,
-                  })
-                }
-                min={0}
-                max={100}
-                step={1}
+              <RbeaBorderRadiusControl
+                attrNameTemplate="icon%s"
+                {...this.props}
               />
             </PanelBody>
           </InspectorTab>

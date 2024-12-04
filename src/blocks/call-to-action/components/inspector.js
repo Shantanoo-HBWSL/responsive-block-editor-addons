@@ -21,6 +21,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -114,6 +115,21 @@ export default class Inspector extends Component {
       buttonSpaceMobile,
       buttonSpaceTablet,
       borderRadius,
+      blockBorderRadius, 
+      blockTopRadius,
+      blockRightRadius,
+      blockBottomRadius,
+      blockLeftRadius,
+      blockTopRadiusTablet,
+      blockRightRadiusTablet,
+      blockBottomRadiusTablet,
+      blockLeftRadiusTablet,
+      blockTopRadiusMobile,
+      blockRightRadiusMobile,
+      blockBottomRadiusMobile,
+      blockLeftRadiusMobile,
+      blockIsRadiusControlConnected,
+      blockIsRadiusValueUpdated,
       boxShadowColor,
       boxShadowHOffset,
       boxShadowVOffset,
@@ -157,6 +173,19 @@ export default class Inspector extends Component {
       ctaBorderStyle,
       ctaBorderWidth,
       ctaBorderRadius,
+      ctaBlockTopRadius,
+      ctaBlockRightRadius,
+      ctaBlockBottomRadius,
+      ctaBlockLeftRadius,
+      ctaBlockTopRadiusTablet,
+      ctaBlockRightRadiusTablet,
+      ctaBlockBottomRadiusTablet,
+      ctaBlockLeftRadiusTablet,
+      ctaBlockTopRadiusMobile,
+      ctaBlockRightRadiusMobile,
+      ctaBlockBottomRadiusMobile,
+      ctaBlockLeftRadiusMobile,
+      ctaBlockIsRadiusControlConnected,
       ctaHpaddingTablet,
       ctaHpaddingMobile,
       ctaVpaddingTablet,
@@ -337,6 +366,60 @@ export default class Inspector extends Component {
       },
     ];
 
+    // backward compatibility for border radius controls
+
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          borderRadius !== undefined ? borderRadius : blockTopRadius,
+          blockBottomRadius:       borderRadius !== undefined ? borderRadius : blockBottomRadius,
+          blockLeftRadius:         borderRadius !== undefined ? borderRadius : blockLeftRadius,
+          blockRightRadius:        borderRadius !== undefined ? borderRadius : blockRightRadius,
+          blockTopRadiusTablet:    borderRadius !== undefined ? borderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: borderRadius !== undefined ? borderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  borderRadius !== undefined ? borderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   borderRadius !== undefined ? borderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    borderRadius !== undefined ? borderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: borderRadius !== undefined ? borderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   borderRadius !== undefined ? borderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  borderRadius !== undefined ? borderRadius : blockRightRadiusMobile,
+          ctaBlockTopRadius:          ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockTopRadius,
+          ctaBlockBottomRadius:       ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockBottomRadius,
+          ctaBlockLeftRadius:         ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockLeftRadius,
+          ctaBlockRightRadius:        ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockRightRadius,
+          ctaBlockTopRadiusTablet:    ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockTopRadiusTablet,
+          ctaBlockBottomRadiusTablet: ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockBottomRadiusTablet,
+          ctaBlockLeftRadiusTablet:   ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockLeftRadiusTablet,
+          ctaBlockRightRadiusTablet:  ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockRightRadiusTablet,
+          ctaBlockTopRadiusMobile:    ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockTopRadiusMobile,
+          ctaBlockBottomRadiusMobile: ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockBottomRadiusMobile,
+          ctaBlockLeftRadiusMobile:   ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockLeftRadiusMobile,
+          ctaBlockRightRadiusMobile:  ctaBorderRadius !== undefined ? ctaBorderRadius : ctaBlockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
+
+    let changeCtaBorderRadius = (value) => 
+    {
+      this.props.setAttributes(
+        {
+          ctaBlockTopRadius:          value,
+          ctaBlockBottomRadius:       value,
+          ctaBlockLeftRadius:         value,
+          ctaBlockRightRadius:        value,
+          ctaBlockTopRadiusTablet:    value,
+          ctaBlockBottomRadiusTablet: value,
+          ctaBlockRightRadiusTablet:  value,
+          ctaBlockLeftRadiusTablet:   value,
+          ctaBlockTopRadiusMobile:    value,
+          ctaBlockBottomRadiusMobile: value,
+          ctaBlockLeftRadiusMobile:   value,
+          ctaBlockRightRadiusMobile:  value,
+        }
+      )
+    }
+
     return (
       <InspectorControls key="inspector">
         <InspectorTabs>
@@ -345,17 +428,9 @@ export default class Inspector extends Component {
               title={__("General", "responsive-block-editor-addons")}
               initialOpen={true}
             >
-              <RbeaRangeControl
-                label={__("Border Radius", "responsive-block-editor-addons")}
-                value={borderRadius}
-                onChange={(value) =>
-                  setAttributes({
-                    borderRadius: value !== undefined ? value : 12,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
+              <RbeaBorderRadiusControl
+                attrNameTemplate="block%s"
+                {...this.props}
               />
               <BoxShadowControl
                 setAttributes={setAttributes}
@@ -876,13 +951,16 @@ export default class Inspector extends Component {
                 }))}
                 onChange={(value) => {
                     if(value == 'responsive-block-editor-addons-cta-button-shape-square') {
-                        this.props.setAttributes({ctaBorderRadius: 0})
+                        // this.props.setAttributes({ctaBorderRadius: 0})
+                        changeCtaBorderRadius(0);
                     }
                     if(value == 'responsive-block-editor-addons-cta-button-shape-rounded') {
-                        this.props.setAttributes({ctaBorderRadius: 4})
+                        // this.props.setAttributes({ctaBorderRadius: 4})
+                        changeCtaBorderRadius(4);
                     }
                     if(value =='responsive-block-editor-addons-cta-button-shape-circular') {
-                        this.props.setAttributes({ctaBorderRadius: 100})
+                        // this.props.setAttributes({ctaBorderRadius: 100})
+                        changeCtaBorderRadius(100);
                     }
                   this.props.setAttributes({
                     buttonShape: value,

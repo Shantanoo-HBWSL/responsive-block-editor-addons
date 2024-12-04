@@ -24,6 +24,8 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 
 const { __ } = wp.i18n;
@@ -288,18 +290,20 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 	  contentFontSizeMobile,
 	  contentFontSizeTablet,
     //Parent block border radius
-    parentBlockBorderTopLeftRadius,
-    parentBlockBorderTopLeftRadiusMobile,
-    parentBlockBorderTopLeftRadiusTablet,
-    parentBlockBorderTopRightRadius,
-    parentBlockBorderTopRightRadiusMobile,
-    parentBlockBorderTopRightRadiusTablet,
-    parentBlockBorderBottomLeftRadius,
-    parentBlockBorderBottomLeftRadiusMobile,
-    parentBlockBorderBottomLeftRadiusTablet,
-    parentBlockBorderBottomRightRadius,
-    parentBlockBorderBottomRightRadiusMobile,
-    parentBlockBorderBottomRightRadiusTablet,
+    parentBlockBorderTopRadius,
+    parentBlockBorderTopRadiusMobile,
+    parentBlockBorderTopRadiusTablet,
+    parentBlockBorderRightRadius,
+    parentBlockBorderRightRadiusMobile,
+    parentBlockBorderRightRadiusTablet,
+    parentBlockBorderLeftRadius,
+    parentBlockBorderLeftRadiusMobile,
+    parentBlockBorderLeftRadiusTablet,
+    parentBlockBorderBottomRadius,
+    parentBlockBorderBottomRadiusMobile,
+    parentBlockBorderBottomRadiusTablet,
+    parentBlockBorderBottomIsRadiusValueUpdated,
+    parentBlockBorderBottomIsRadiusControlConnected,
     //Parent block border width
     parentBlockBorderTopWidth,
     parentBlockBorderTopWidthMobile,
@@ -710,23 +714,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
         title={__("Border", "responsive-block-editor-addons")}
         initialOpen={false}
       >
-        <SelectControl
-          label={__("Border Style")}
-          value={parentBlockBorderStyle}
+        <RbeaBorderStyleTabControl
+          selected={parentBlockBorderStyle}
           onChange={(value) =>
             setAttributes({ parentBlockBorderStyle: value })
           }
-          options={[
-            { value: "none", label: __("None") },
-            { value: "solid", label: __("Solid") },
-            { value: "dotted", label: __("Dotted") },
-            { value: "dashed", label: __("Dashed") },
-            { value: "double", label: __("Double") },
-            { value: "groove", label: __("Groove") },
-            { value: "inset", label: __("Inset") },
-            { value: "outset", label: __("Outset") },
-            { value: "ridge", label: __("Ridge") },
-          ]}
         />
         {"none" != parentBlockBorderStyle && (
           <Fragment>
@@ -963,236 +955,10 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
         </Fragment>
         )}
         <br></br>
-        <BaseControl.VisualLabel>
-            {__("Border Radius:", "responsive-block-editor-addons")}
-          </BaseControl.VisualLabel>
-          <br></br>
-          <TabPanel
-          className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-          activeClass="active-tab"
-          tabs={[
-            {
-              name: "desktop",
-              title: <Dashicon icon="desktop" />,
-              className:
-                " responsive-desktop-tab  responsive-responsive-tabs",
-            },
-            {
-              name: "tablet",
-              title: <Dashicon icon="tablet" />,
-              className:
-                " responsive-tablet-tab  responsive-responsive-tabs",
-            },
-            {
-              name: "mobile",
-              title: <Dashicon icon="smartphone" />,
-              className:
-                " responsive-mobile-tab  responsive-responsive-tabs",
-            },
-          ]}
-        >
-          {(tab) => {
-            let tabout;
-
-            if ("mobile" === tab.name) {
-              tabout = (
-                <Fragment>
-                  <RbeaRangeControl
-                    label={__(
-                      "Top Left (Mobile)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderTopLeftRadiusMobile}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderTopLeftRadiusMobile: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Top Right (Mobile)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderTopRightRadiusMobile}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderTopRightRadiusMobile: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Bottom Left (Mobile)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderBottomLeftRadiusMobile}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderBottomLeftRadiusMobile: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Bottom Right (Mobile)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderBottomRightRadiusMobile}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderBottomRightRadiusMobile: value,
-                      })
-                    }
-                  />
-                </Fragment>
-              );
-            } else if ("tablet" === tab.name) {
-              tabout = (
-                <Fragment>
-                  <RbeaRangeControl
-                    label={__(
-                      "Top Left(Tablet)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderTopLeftRadiusTablet}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderTopLeftRadiusTablet: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Top Right (Tablet)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderTopRightRadiusTablet}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderTopRightRadiusTablet: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Bottom Left (Tablet)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderBottomLeftRadiusTablet}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderBottomLeftRadiusTablet: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Bottom Right (Tablet)",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderBottomRightRadiusTablet}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderBottomRightRadiusTablet: value,
-                      })
-                    }
-                  />
-                </Fragment>
-              );
-            } else {
-              tabout = (
-                <Fragment>
-                  <RbeaRangeControl
-                    label={__(
-                      "Top Left",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderTopLeftRadius}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderTopLeftRadius: value !== undefined ? value : "",
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Top Right",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderTopRightRadius}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderTopRightRadius: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Bottom Left",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderBottomLeftRadius}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderBottomLeftRadius: value,
-                      })
-                    }
-                  />
-                  <RbeaRangeControl
-                    label={__(
-                      "Bottom Right",
-                      "responsive-block-editor-addons"
-                    )}
-                    min={0}
-                    max={2000}
-                    allowReset
-                    value={parentBlockBorderBottomRightRadius}
-                    onChange={(value) =>
-                      setAttributes({
-                        parentBlockBorderBottomRightRadius: value,
-                      })
-                    }
-                  />
-                </Fragment>
-              );
-            }
-            return <div>{tabout}</div>;
-          }}
-        </TabPanel>
+        <RbeaBorderRadiusControl
+          attrNameTemplate="parentBlockBorder%s"
+          {...this.props}
+        />
       </PanelBody>
       );
     };

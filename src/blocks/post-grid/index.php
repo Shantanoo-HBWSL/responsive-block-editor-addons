@@ -533,6 +533,118 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => '',
 				),
+				'imageTopRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageRightRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageBottomRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageLeftRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageTopRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageRightRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageBottomRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageLeftRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageTopRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageRightRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageBottomRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageLeftRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'imageIsRadiusControlConnected' => array(
+					'type' => "boolean",
+					'default' => false,
+				),
+				'imageIsRadiusValueUpdated' => array(
+					'type' => "boolean",
+					'default' => false,
+				),
+				'paginationTopRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationRightRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationBottomRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationLeftRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationTopRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationRightRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationBottomRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationLeftRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationTopRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationRightRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationBottomRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationLeftRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'paginationIsRadiusControlConnected' => array(
+					'type' => "boolean",
+					'default' => false,
+				),
+				'paginationIsRadiusValueUpdated' => array(
+					'type' => "boolean",
+					'default' => false,
+				),
 				'textColor'                   => array(
 					'type'    => 'string',
 					'default' => '#444444',
@@ -778,6 +890,62 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				'blockBorderRadius'           => array(
 					'type'    => 'number',
 					'default' => '0',
+				),
+				'blockTopRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockRightRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBottomRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockLeftRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockTopRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockRightRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBottomRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockLeftRadiusTablet'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockTopRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockRightRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBottomRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockLeftRadiusMobile'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockIsRadiusControlConnected'           => array(
+					'type'    => 'boolean',
+					'default' => 'false',
+				),
+				'blockIsRadiusValueUpdated'           => array(
+					'type'    => 'boolean',
+					'default' => 'false',
 				),
 				'blockBorderStyle'            => array(
 					'type'    => 'string',

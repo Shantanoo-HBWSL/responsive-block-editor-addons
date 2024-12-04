@@ -36,6 +36,18 @@ function EditorStyles(props) {
     block_id,
     imageBorderColor,
     imageBorderRadius,
+    imageTopRadius,
+    imageRightRadius,
+    imageBottomRadius,
+    imageLeftRadius,
+    imageTopRadiusTablet,
+    imageRightRadiusTablet,
+    imageBottomRadiusTablet,
+    imageLeftRadiusTablet,
+    imageTopRadiusMobile,
+    imageRightRadiusMobile,
+    imageBottomRadiusMobile,
+    imageLeftRadiusMobile,
     imageBorderStyle,
     imageBorderWidth,
     imageboxShadowHOffset,
@@ -64,6 +76,18 @@ function EditorStyles(props) {
     LayoverContentPosition,
     layoverimageBorderColor,
     layoverimageBorderRadius,
+    layoverimageTopRadius,
+    layoverimageRightRadius,
+    layoverimageBottomRadius,
+    layoverimageLeftRadius,
+    layoverimageTopRadiusTablet,
+    layoverimageRightRadiusTablet,
+    layoverimageBottomRadiusTablet,
+    layoverimageLeftRadiusTablet,
+    layoverimageTopRadiusMobile,
+    layoverimageRightRadiusMobile,
+    layoverimageBottomRadiusMobile,
+    layoverimageLeftRadiusMobile,
     layoverimageBorderStyle,
     layoverimageBorderWidth,
     layoverInputDistance,
@@ -190,7 +214,10 @@ function EditorStyles(props) {
       height: generateCSSUnit(imageHeight, "px"),
       "border-color": imageBorderColor,
       "border-width": generateCSSUnit(imageBorderWidth, "px"),
-      "border-radius": generateCSSUnit(imageBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(imageTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(imageRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(imageBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(imageLeftRadius, "px"),
       "border-style": imageBorderStyle,
       "box-shadow":
         generateCSSUnit(imageboxShadowHOffset, "px") +
@@ -218,7 +245,10 @@ function EditorStyles(props) {
       "justify-content": leftoverlayjustify,
       "border-color": layoverimageBorderColor,
       "border-width": generateCSSUnit(layoverimageBorderWidth, "px"),
-      "border-radius": generateCSSUnit(layoverimageBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(layoverimageTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(layoverimageRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(layoverimageBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(layoverimageLeftRadius, "px"),
       "border-style": layoverimageBorderStyle,
       "top": generateCSSUnit(layoverInputDistance, "px"),
       "bottom": generateCSSUnit(layoverInputDistance, "px"),
@@ -296,7 +326,10 @@ function EditorStyles(props) {
       "height": generateCSSUnit(imageHeightTablet, "px"),
       "border-color": imageBorderColor,
       "border-width": generateCSSUnit(imageBorderWidth, "px"),
-      "border-radius": generateCSSUnit(imageBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(imageTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(imageRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(imageBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(imageLeftRadiusTablet, "px"),
       "border-style": imageBorderStyle,
       "box-shadow":
         generateCSSUnit(imageboxShadowHOffset, "px") +
@@ -326,7 +359,14 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(captionleftmarginTablet, "px"),
       "margin-right": generateCSSUnit(captionrightmarginTablet, "px"),
     },
+    " .responsive-image-block-description": {
+      "border-top-left-radius": generateCSSUnit(layoverimageTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(layoverimageRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(layoverimageBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(layoverimageLeftRadiusTablet, "px"),
+    },
   };
+
 
   var mobile_selectors = {
     "": {
@@ -348,7 +388,10 @@ function EditorStyles(props) {
       height: generateCSSUnit(imageHeightMobile, "px"),
       "border-color": imageBorderColor,
       "border-width": generateCSSUnit(imageBorderWidth, "px"),
-      "border-radius": generateCSSUnit(imageBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(imageTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(imageRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(imageBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(imageLeftRadiusMobile, "px"),
       "border-style": imageBorderStyle,
       "box-shadow":
         generateCSSUnit(imageboxShadowHOffset, "px") +
@@ -377,6 +420,12 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(captionbottommarginMobile, "px"),
       "margin-left": generateCSSUnit(captionleftmarginMobile, "px"),
       "margin-right": generateCSSUnit(captionrightmarginMobile, "px"),
+    },
+    " .responsive-image-block-description": {
+      "border-top-left-radius": generateCSSUnit(layoverimageTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(layoverimageRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(layoverimageBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(layoverimageLeftRadiusMobile, "px"),
     },
   };
   var styling_css = "";

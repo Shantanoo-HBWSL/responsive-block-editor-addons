@@ -11,6 +11,8 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 /**
  * Inspector Controls
@@ -138,6 +140,48 @@ export default class Inspector extends Component {
       blockRightPaddingMobile,
       blockRightPaddingTablet,
       blockIsPaddingControlConnected,
+      blockTopRadius,
+      blockRightRadius,
+      blockBottomRadius,
+      blockLeftRadius,
+      blockTopRadiusTablet,
+      blockRightRadiusTablet,
+      blockBottomRadiusTablet,
+      blockLeftRadiusTablet,
+      blockTopRadiusMobile,
+      blockRightRadiusMobile,
+      blockBottomRadiusMobile,
+      blockLeftRadiusMobile,
+      blockIsRadiusControlConnected,
+      blockIsRadiusValueUpdated,
+      imageTopRadius,
+      imageRightRadius,
+      imageBottomRadius,
+      imageLeftRadius,
+      imageTopRadiusTablet,
+      imageRightRadiusTablet,
+      imageBottomRadiusTablet,
+      imageLeftRadiusTablet,
+      imageTopRadiusMobile,
+      imageRightRadiusMobile,
+      imageBottomRadiusMobile,
+      imageLeftRadiusMobile,
+      imageIsRadiusControlConnected,
+      imageIsRadiusValueUpdated,
+      paginationTopRadius,
+      paginationRightRadius,
+      paginationBottomRadius,
+      paginationLeftRadius,
+      paginationTopRadiusTablet,
+      paginationRightRadiusTablet,
+      paginationBottomRadiusTablet,
+      paginationLeftRadiusTablet,
+      paginationTopRadiusMobile,
+      paginationRightRadiusMobile,
+      paginationBottomRadiusMobile,
+      paginationLeftRadiusMobile,
+      paginationIsRadiusControlConnected,
+      paginationIsRadiusValueUpdated,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -316,6 +360,72 @@ export default class Inspector extends Component {
           key:thisIndex
         });
       });
+    }
+
+    // backward compatibility for border radius control
+
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+        blockTopRadius:          attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockTopRadius,
+        blockBottomRadius:       attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockBottomRadius,
+        blockLeftRadius:         attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockLeftRadius,
+        blockRightRadius:        attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockRightRadius,
+        blockTopRadiusTablet:    attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockTopRadiusTablet,
+        blockBottomRadiusTablet: attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockBottomRadiusTablet,
+        blockRightRadiusTablet:  attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockRightRadiusTablet,
+        blockLeftRadiusTablet:   attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockLeftRadiusTablet,
+        blockTopRadiusMobile:    attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockTopRadiusMobile,
+        blockBottomRadiusMobile: attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockBottomRadiusMobile,
+        blockLeftRadiusMobile:   attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockLeftRadiusMobile,
+        blockRightRadiusMobile:  attributes.blockBorderRadius !== undefined ? attributes.blockBorderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
+
+      // backward compatibility for border radius control
+    
+    if (!imageIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+        imageTopRadius:          attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageTopRadius,
+        imageBottomRadius:       attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageBottomRadius,
+        imageLeftRadius:         attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageLeftRadius,
+        imageRightRadius:        attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageRightRadius,
+        imageTopRadiusTablet:    attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageTopRadiusTablet,
+        imageBottomRadiusTablet: attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageBottomRadiusTablet,
+        imageRightRadiusTablet:  attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageRightRadiusTablet,
+        imageLeftRadiusTablet:   attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageLeftRadiusTablet,
+        imageTopRadiusMobile:    attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageTopRadiusMobile,
+        imageBottomRadiusMobile: attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageBottomRadiusMobile,
+        imageLeftRadiusMobile:   attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageLeftRadiusMobile,
+        imageRightRadiusMobile:  attributes.imageBorderRadius !== undefined ? attributes.imageBorderRadius : imageRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({imageIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for border radius control 
+
+    if (!paginationIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          paginationTopRadius:          attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationTopRadius,
+          paginationBottomRadius:       attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationBottomRadius,
+          paginationLeftRadius:         attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationLeftRadius,
+          paginationRightRadius:        attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationRightRadius,
+          paginationTopRadiusTablet:    attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationTopRadiusTablet,
+          paginationBottomRadiusTablet: attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationBottomRadiusTablet,
+          paginationRightRadiusTablet:  attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationRightRadiusTablet,
+          paginationLeftRadiusTablet:   attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationLeftRadiusTablet,
+          paginationTopRadiusMobile:    attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationTopRadiusMobile,
+          paginationBottomRadiusMobile: attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationBottomRadiusMobile,
+          paginationLeftRadiusMobile:   attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationLeftRadiusMobile,
+          paginationRightRadiusMobile:  attributes.paginationBorderRadius !== undefined ? attributes.paginationBorderRadius : paginationRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({paginationIsRadiusValueUpdated: true});
     }
 
     return (
@@ -732,17 +842,9 @@ export default class Inspector extends Component {
                     })
                   }
                 />,
-                <RbeaRangeControl
-                key="imageBorderRadiusControl"
-                  label={__("Image Border Radius", "responsive-block-editor-addons")}
-                  value={attributes.imageBorderRadius}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      imageBorderRadius: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
+                <RbeaBorderRadiusControl
+                  attrNameTemplate="image%s"
+                  {...this.props}
                 />,
               ]}
               <ToggleControl
@@ -908,7 +1010,7 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <BlockBorderHelperControl
+              <RbeaBlockBorderHelperControl
                 attrNameTemplate="block%s"
                 values={{
                   radius: attributes.blockBorderRadius,
@@ -1070,14 +1172,9 @@ export default class Inspector extends Component {
                 onChange={(colorValue) => this.props.setAttributes({ paginationBorderColor: colorValue })}
                 resetColor={() => this.props.setAttributes({ paginationBorderColor: "" })}
               />
-              <RbeaRangeControl
-                label={__("Border Radius", "responsive-block-editor-addons")}
-                value={attributes.paginationBorderRadius}
-                onChange={(value) =>
-                  setAttributes({ paginationBorderRadius: value })
-                }
-                min={0}
-                max={150}
+              <RbeaBorderRadiusControl
+                attrNameTemplate="pagination%s"
+                {...this.props}
               />
               <RbeaColorControl
                 label = {__("Active Color", "responsive-block-editor-addons")}

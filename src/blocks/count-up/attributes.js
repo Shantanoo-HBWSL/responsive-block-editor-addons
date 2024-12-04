@@ -123,6 +123,58 @@ const attributes = {
   blockBorderRadius: {
     type: "number",
   },
+  blockTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   blockBorderColor: {
     type: "string",
   },
@@ -183,6 +235,62 @@ const attributes = {
   shapeBorderRadius: {
     type: "number",
     default: 100,
+  },
+  shapeBorderTopRadius: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderRightRadius: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderBottomRadius: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderLeftRadius: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderTopRadiusTablet: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderRightRadiusTablet: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderBottomRadiusTablet: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderLeftRadiusTablet: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderTopRadiusMobile: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderRightRadiusMobile: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderBottomRadiusMobile: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderLeftRadiusMobile: {
+    type: "number",
+    default: 100,
+  },
+  shapeBorderIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  shapeBorderIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
   },
   shapePadding: {
     type: "number",

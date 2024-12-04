@@ -25,6 +25,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -277,6 +278,20 @@ export default class Inspector extends Component {
         blockBorderStyle,
         blockBorderWidth,
         blockBorderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusControlConnected,
+        blockIsRadiusValueUpdated,
         blockBorderColor,
         boxShadowColor,
         boxShadowHOffset,
@@ -613,6 +628,28 @@ export default class Inspector extends Component {
       },
       { value: "image", label: __("Image", "responsive-block-editor-addons") },
     ];
+
+    // backward compatibility for border radius control
+
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadius,
+          blockBottomRadius:       blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadius,
+          blockLeftRadius:         blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadius,
+          blockRightRadius:        blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadius,
+          blockTopRadiusTablet:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -1086,7 +1123,7 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <BlockBorderHelperControl
+              <RbeaBlockBorderHelperControl
                 attrNameTemplate="block%s"
                 values={{
                   radius: blockBorderRadius,

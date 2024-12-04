@@ -247,7 +247,7 @@ export default class Inspector extends Component {
                     <RbeaMediaUploadControl
                       label={__("Image", "responsive-block-editor-addons")}
                       value={{
-                          url: image.url,
+                          url: image? image.url : '',
                       }}
                       onChange={(media) => {
                         this.props.setAttributes({ image: media });

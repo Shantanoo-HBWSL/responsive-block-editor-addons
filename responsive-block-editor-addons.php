@@ -4,17 +4,17 @@
  * Plugin URI:      cyberchimps.com
  * Description:     Responsive Blocks offers 50+ Gutenberg blocks so you can design beautiful pages without writing a single line of code.
  * Author:          CyberChimps
- * Author URI:		https://cyberchimps.com/blocks/
+ * Author URI:		https://cyberchimps.com/responsive-blocks/
  * Text Domain:     responsive-block-editor-addons
  * Domain Path:     /languages
- * Version:         1.9.3
+ * Version:         1.9.6
  *
  * @package         Responsive_Block_Editor_Addons
  */
 
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER', '1.9.3' );
+define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER', '1.9.6' );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_BASENAME', plugin_basename( __FILE__ ) );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_SEVEN_DAYS_IN_SECONDS', 604800 );
 

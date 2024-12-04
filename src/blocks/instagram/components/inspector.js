@@ -6,6 +6,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -44,6 +45,20 @@ export default class Inspector extends Component {
         numberOfItems,
         imagesGap,
         borderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusControlConnected,
+        blockIsRadiusValueUpdated,
         hasEqualImages,
         showCaptions,
         instaTopPadding,
@@ -111,6 +126,27 @@ export default class Inspector extends Component {
       paddingMobileRight: 0,
       paddingMobileBottom: 0,
       paddingMobileLeft: 0,
+    }
+
+    // backward compatibility for border radius control 
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          borderRadius !== undefined ? borderRadius : blockTopRadius,
+          blockBottomRadius:       borderRadius !== undefined ? borderRadius : blockBottomRadius,
+          blockLeftRadius:         borderRadius !== undefined ? borderRadius : blockLeftRadius,
+          blockRightRadius:        borderRadius !== undefined ? borderRadius : blockRightRadius,
+          blockTopRadiusTablet:    borderRadius !== undefined ? borderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: borderRadius !== undefined ? borderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  borderRadius !== undefined ? borderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   borderRadius !== undefined ? borderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    borderRadius !== undefined ? borderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: borderRadius !== undefined ? borderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   borderRadius !== undefined ? borderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  borderRadius !== undefined ? borderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
     }
 
     return (
@@ -225,12 +261,9 @@ export default class Inspector extends Component {
                 max={30}
               />
 
-              <RbeaRangeControl
-                label={__("Border Radius", "responsive-block-editor-addons")}
-                value={borderRadius}
-                onChange={(borderRadius) => setAttributes({ borderRadius })}
-                min={0}
-                max={50}
+              <RbeaBorderRadiusControl
+                attrNameTemplate="block%s"
+                {...this.props}
               />
             </PanelBody>
           </InspectorTab>

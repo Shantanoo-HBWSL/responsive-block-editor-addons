@@ -28,6 +28,8 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 
 const { __ } = wp.i18n;
 
@@ -186,6 +188,7 @@ class edit extends Component {
     setAttributes({ backgroundImage: media });
   }
 
+  
   render() {
     const { className, setAttributes, attributes } = this.props;
 
@@ -268,7 +271,21 @@ class edit extends Component {
       arrowDots,
       arrowSize,
       arrowBorderWidth,
-      arrowBorderRadius,
+      arrowBorderRadius, 
+      arrowTopRadius,
+      arrowRightRadius,
+      arrowBottomRadius,
+      arrowLeftRadius,
+      arrowTopRadiusTablet,
+      arrowRightRadiusTablet,
+      arrowBottomRadiusTablet,
+      arrowLeftRadiusTablet,
+      arrowTopRadiusMobile,
+      arrowRightRadiusMobile,
+      arrowBottomRadiusMobile,
+      arrowLeftRadiusMobile,
+      arrowIsRadiusControlConnected,
+      arrowIsRadiusValueUpdated,
       arrowBorderColor,
       arrowBorderStyle,
       autoplay,
@@ -304,12 +321,40 @@ class edit extends Component {
         blockBorderStyle,
         blockBorderWidth,
         blockBorderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusControlConnected,
+        blockIsRadiusValueUpdated,
         blockBorderColor,
       stack,
       skin,
       bubbleColor,
       bubblePadding,
       bubbleBorderRadius,
+      bubbleTopRadius,
+      bubbleRightRadius,
+      bubbleBottomRadius,
+      bubbleLeftRadius,
+      bubbleTopRadiusTablet,
+      bubbleRightRadiusTablet,
+      bubbleBottomRadiusTablet,
+      bubbleLeftRadiusTablet,
+      bubbleTopRadiusMobile,
+      bubbleRightRadiusMobile,
+      bubbleBottomRadiusMobile,
+      bubbleLeftRadiusMobile,
+      bubbleIsRadiusControlConnected,
+      bubbleIsRadiusValueUpdated,
       slicksettings,
       blockPadding,
       blockPaddingTablet,
@@ -395,6 +440,28 @@ class edit extends Component {
       )
     }
     this.props.setAttributes({newSpacingValuesUpdated: true});
+
+    // backward compatibility for border radius control
+  
+    if ( ! bubbleIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          bubbleTopRadius:          bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadius,
+          bubbleBottomRadius:       bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadius,
+          bubbleLeftRadius:         bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadius,
+          bubbleRightRadius:        bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadius,
+          bubbleTopRadiusTablet:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusTablet,
+          bubbleBottomRadiusTablet: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusTablet,
+          bubbleRightRadiusTablet:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusTablet,
+          bubbleLeftRadiusTablet:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusTablet,
+          bubbleTopRadiusMobile:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusMobile,
+          bubbleBottomRadiusMobile: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusMobile,
+          bubbleLeftRadiusMobile:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusMobile,
+          bubbleRightRadiusMobile:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({bubbleIsRadiusValueUpdated: true});
+    }
 
     const fontWeightOptions = [
       {
@@ -668,7 +735,7 @@ class edit extends Component {
           )}
         </PanelBody>
         <PanelBody title={__("Border", "responsive-block-editor-addons")} initialOpen={false}>
-            <BlockBorderHelperControl
+            <RbeaBlockBorderHelperControl
                 attrNameTemplate="block%s"
                 values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
                 setAttributes={setAttributes}
@@ -696,7 +763,10 @@ class edit extends Component {
           role="button"
           style={{
               borderColor: arrowBorderColor,
-              borderRadius: arrowBorderRadius,
+              borderTopLeftRadius: arrowTopRadius,
+              borderTopRightRadius: arrowRightRadius,
+              borderBottomRightRadius: arrowBottomRadius,
+              borderBottomLeftRadius: arrowLeftRadius,
               borderWidth: arrowBorderWidth,
               borderStyle: arrowBorderStyle,
           }}
@@ -717,7 +787,10 @@ class edit extends Component {
           role="button"
           style={{
               borderColor: arrowBorderColor,
-              borderRadius: arrowBorderRadius,
+              borderTopLeftRadius: arrowTopRadius,
+              borderTopRightRadius: arrowRightRadius,
+              borderBottomRightRadius: arrowBottomRadius,
+              borderBottomLeftRadius: arrowLeftRadius,
               borderWidth: arrowBorderWidth,
               borderStyle: arrowBorderStyle,
           }}
@@ -866,7 +939,7 @@ class edit extends Component {
               max={50}
             />
               <PanelBody title={__("Arrow Border", "responsive-block-editor-addons")} initialOpen={false}>
-              <BlockBorderHelperControl
+              <RbeaBlockBorderHelperControl
                   attrNameTemplate="arrow%s"
                   values={{ radius: arrowBorderRadius, style: arrowBorderStyle, width: arrowBorderWidth, color: arrowBorderColor }}
                   setAttributes={setAttributes}
@@ -1124,15 +1197,9 @@ class edit extends Component {
                   max={50}
                   allowReset
                 />
-                <RbeaRangeControl
-                  label={__("Border Radius", "responsive-block-editor-addons")}
-                  value={bubbleBorderRadius}
-                  onChange={(value) =>
-                    setAttributes({ bubbleBorderRadius: value })
-                  }
-                  min={0}
-                  max={50}
-                  allowReset
+                <RbeaBorderRadiusControl
+                  attrNameTemplate="bubble%s"
+                  {...this.props}
                 />
               </PanelBody>
             )}
@@ -1341,6 +1408,50 @@ class edit extends Component {
       </InspectorControls>
     );
 
+     // backward compatibility for border radius control
+
+     if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadius,
+          blockBottomRadius:       blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadius,
+          blockLeftRadius:         blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadius,
+          blockRightRadius:        blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadius,
+          blockTopRadiusTablet:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for border radius control
+
+    if (!arrowIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+        arrowTopRadius:          arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadius,
+        arrowBottomRadius:       arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadius,
+        arrowLeftRadius:         arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadius,
+        arrowRightRadius:        arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadius,
+        arrowTopRadiusTablet:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusTablet,
+        arrowBottomRadiusTablet: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusTablet,
+        arrowRightRadiusTablet:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusTablet,
+        arrowLeftRadiusTablet:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusTablet,
+        arrowTopRadiusMobile:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusMobile,
+        arrowBottomRadiusMobile: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusMobile,
+        arrowLeftRadiusMobile:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusMobile,
+        arrowRightRadiusMobile:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({arrowIsRadiusValueUpdated: true});
+      }
+
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-testimonial-slider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
@@ -1363,7 +1474,28 @@ class edit extends Component {
             }
             .responsive-block-editor-addons-tm__content.skin-type-bubble .responsive-block-editor-addons-testinomial-text-wrap {
             background-color: ${bubbleColor};
-            border-radius: ${bubbleBorderRadius}px;
+            border-top-left-radius: ${bubbleTopRadius}px;
+            border-top-right-radius: ${bubbleRightRadius}px;
+            border-bottom-right-radius: ${bubbleBottomRadius}px;
+            border-bottom-left-radius: ${bubbleLeftRadius}px;
+            }
+
+            @media screen and (max-width: 1024px) {
+              .responsive-block-editor-addons-tm__content.skin-type-bubble .responsive-block-editor-addons-testinomial-text-wrap {
+                border-top-left-radius: ${bubbleTopRadiusTablet}px;
+                border-top-right-radius: ${bubbleRightRadiusTablet}px;
+                border-bottom-right-radius: ${bubbleBottomRadiusTablet}px;
+                border-bottom-left-radius: ${bubbleLeftRadiusTablet}px;
+              }
+            }
+
+            @media screen and (max-width: 767px) {
+               .responsive-block-editor-addons-tm__content.skin-type-bubble .responsive-block-editor-addons-testinomial-text-wrap {
+                border-top-left-radius: ${bubbleTopRadiusMobile}px;
+                border-top-right-radius: ${bubbleRightRadiusMobile}px;
+                border-bottom-right-radius: ${bubbleBottomRadiusMobile}px;
+                border-bottom-left-radius: ${bubbleLeftRadiusMobile}px;
+              }
             }
             `}
         </Style>

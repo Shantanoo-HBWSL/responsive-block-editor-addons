@@ -1,6 +1,7 @@
 import { camelCase } from "lodash";
 import { sprintf } from "@wordpress/i18n";
 import RbeaRangeControl from "../../utils/components/rbea-range-control";
+import RbeaBorderRadiusControl from "../RbeaBorderRadiusControl";
 import RbeaColorControl from "../../utils/components/rbea-color-control";
 import RbeaBorderStyleTabControl from "../../utils/components/rbea-border-style-tab-control";
 
@@ -18,7 +19,7 @@ const { SelectControl, RangeControl , RadioControl} = wp.components;
 const { Component, Fragment } = wp.element;
 
 
-const BlockBorderHelperControl = props => {
+const RbeaBlockBorderHelperControl = props => {
     const getAttrName = attrName => camelCase(sprintf(props.attrNameTemplate, attrName))
 
     var advancedControls;
@@ -49,7 +50,7 @@ class BlockBorderControl extends Component {
 
     render() {
         var advancedControls;
-   
+ 
         advancedControls = (
             <Fragment>
                 {(
@@ -78,14 +79,13 @@ class BlockBorderControl extends Component {
                     />
                 )}
                 {(
-                    <RbeaRangeControl
-                        label={__("Border Radius", "responsive-block-editor-addons")}
-                        value={this.props.values.radius}
-                        onChange={this.props.onChangeBorderRadius}
-                        min={0}
-                        max={1000}
-                        allowReset
-                    />
+                    <>
+                        <RbeaBorderRadiusControl
+                        attrNameTemplate={this.props.attrNameTemplate}
+                        {...this.props}
+                        />
+                    </>
+                    
                 )}
             </Fragment>
         );
@@ -99,4 +99,4 @@ class BlockBorderControl extends Component {
     }
 }
 
-export default BlockBorderHelperControl;
+export default RbeaBlockBorderHelperControl;

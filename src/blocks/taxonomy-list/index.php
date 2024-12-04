@@ -267,6 +267,62 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'number',
 					'default' => 0,
 				),
+				'gridTopRadius' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridRightRadius' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridBottomRadius' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridLeftRadius' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridTopRadiusTablet' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridRightRadiusTablet' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridBottomRadiusTablet' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridLeftRadiusTablet' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridTopRadiusMobile' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridRightRadiusMobile' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridBottomRadiusMobile' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridLeftRadiusMobile' => array(
+					'type' => 'number',
+					'default' => 0,
+				  ),
+				  'gridIsRadiusControlConnected' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+				  'gridIsRadiusValueUpdated' => array(
+					'type' => 'boolean',
+					'default' => false,
+				  ),
 				'gridBorderColor'        => array(
 					'type'    => 'string',
 					'default' => '#e0e0e0',

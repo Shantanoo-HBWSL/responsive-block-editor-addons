@@ -378,6 +378,62 @@ const attributes = {
   blockBorderRadius: {
     type: "number",
   },
+  blockTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  blockIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   blockBorderColor: {
     type: "string",
   },
@@ -538,6 +594,63 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  resImageTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  resImageRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  resImageBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  resImageLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  resImageTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  resImageRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  resImageBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  resImageLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  resImageTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  resImageRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  resImageBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  resImageLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  resImageIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  resImageIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  
   resImageBorderWidth: {
     type: "number",
     default: 2,
@@ -617,6 +730,62 @@ const attributes = {
   iconBorderRadius: {
     type: "number",
     default: 0,
+  },
+  iconTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  iconRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  iconBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  iconLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  iconTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  iconRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  iconBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  iconLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  iconTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  iconRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  iconBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  iconLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  iconIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  iconIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
   },
   iconPadding: {
     type: "number",

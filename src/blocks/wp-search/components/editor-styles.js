@@ -15,6 +15,18 @@
      inputBackgroundColor,
      blockBorderColor,
      blockBorderRadius,
+     blockTopRadius,
+     blockRightRadius,
+     blockBottomRadius,
+     blockLeftRadius,
+     blockTopRadiusTablet,
+     blockRightRadiusTablet,
+     blockBottomRadiusTablet,
+     blockLeftRadiusTablet,
+     blockTopRadiusMobile,
+     blockRightRadiusMobile,
+     blockBottomRadiusMobile,
+     blockLeftRadiusMobile,
      blockBorderStyle,
      blockBorderWidth,
      inputTopPadding,
@@ -128,15 +140,24 @@
    let iconBorderRight =  0;
  
    let borderRadius = generateCSSUnit(blockBorderRadius, "px");
-   let inputBorderRadius = "classic" === layout ? `${borderRadius} 0 0 ${borderRadius}` : `0 ${borderRadius} ${borderRadius} 0`;
-   let iconBorderRadius = "minimal" === layout ? `${borderRadius} 0 0 ${borderRadius}` : 0;
-   let buttonBorderRadius = `0 ${borderRadius} ${borderRadius} 0`;
+   let inputBorderRadius = "classic" === layout ? `${blockTopRadius}px 0px 0px ${blockLeftRadius}px` : `0px ${blockRightRadius}px ${blockBottomRadius}px 0px`;
+   let iconBorderRadius = "minimal" === layout ? `${blockTopRadius}px 0px 0px ${blockLeftRadius}px` : `0px ${blockRightRadius}px ${blockBottomRadius}px 0px`;
+   let buttonBorderRadius = `0px ${blockRightRadius}px ${blockBottomRadius}px 0px`;
+   let inputBorderRadiusMobile = "classic" === layout ? `${blockTopRadiusMobile}px 0px 0px ${blockLeftRadiusMobile}px` : `0px ${blockRightRadiusMobile}px ${blockBottomRadiusMobile}px 0px`;
+   let iconBorderRadiusMobile = "minimal" === layout ? `${blockTopRadiusMobile}px 0px 0px ${blockLeftRadiusMobile}px` : `0px ${blockRightRadiusMobile}px ${blockBottomRadiusMobile}px 0px`;
+   let buttonBorderRadiusMobile = `0px ${blockRightRadiusMobile}px ${blockBottomRadiusMobile}px 0px`;
+   let inputBorderRadiusTablet = "classic" === layout ? `${blockTopRadiusTablet}px 0px 0px ${blockLeftRadiusTablet}px` : `0px ${blockRightRadiusTablet}px ${blockBottomRadiusTablet}px 0px`;
+   let iconBorderRadiusTablet = "minimal" === layout ? `${blockTopRadiusTablet}px 0px 0px ${blockLeftRadiusTablet}px` : `0px ${blockRightRadiusTablet}px ${blockBottomRadiusTablet}px 0px`;
+   let buttonBorderRadiusTablet = `0px ${blockRightRadiusTablet}px ${blockBottomRadiusTablet}px 0px`;
 
    var selectors = {
     " ": {
       "opacity": hideWidget? 0.2 : 1,
       "width": width,
-      "border-radius": borderRadius,
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "padding": 0,
       "max-width": "100%",
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
@@ -235,10 +256,15 @@
       'margin-right': generateCSSUnit(blockRightMarginMobile, "px"),
       'margin-bottom': generateCSSUnit(blockBottomMarginMobile, "px"),
       'margin-left': generateCSSUnit(blockLeftMarginMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-search-form__input": {
       "font-size": generateCSSUnit(inputFontSizeMobile, "px"),
-     "padding": inputBoxPaddingMobile
+     "padding": inputBoxPaddingMobile,
+     "border-radius": inputBorderRadiusMobile
     },
     " .responsive-block-editor-addons-search-icon-wrap": {
       "padding": iconAndTextPaddingMobile,
@@ -249,6 +275,7 @@
     },
     " .responsive-block-editor-addons-search-submit": {
       "padding": buttonPaddingMobile,
+      "border-radius": buttonBorderRadiusMobile,
     },
    };
  
@@ -263,10 +290,15 @@
       'margin-right': generateCSSUnit(blockRightMarginTablet, "px"),
       'margin-bottom': generateCSSUnit(blockBottomMarginTablet, "px"),
       'margin-left': generateCSSUnit(blockLeftMarginTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-search-form__input": {
       "font-size": generateCSSUnit(inputFontSizeTablet, "px"),
       "padding": inputBoxPaddingTablet,
+      "border-radius": inputBorderRadiusTablet,
      },
     " .responsive-block-editor-addons-search-icon-wrap": {
      "padding": iconAndTextPaddingTablet,
@@ -277,6 +309,7 @@
     },
     " .responsive-block-editor-addons-search-submit": {
       "padding": buttonPaddingTablet,
+      "border-radius": buttonBorderRadiusTablet,
     },
    };
  

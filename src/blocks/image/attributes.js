@@ -86,6 +86,62 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  imageTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  imageRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  imageTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  imageIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   imageBorderStyle: {
     type: "string",
     default: "none",
@@ -299,6 +355,62 @@ const attributes = {
   layoverimageBorderRadius: {
     type: "number",
     default: 0,
+  },
+  layoverimageTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  layoverimageIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
   },
   layoverimageBorderStyle: {
     type: "string",

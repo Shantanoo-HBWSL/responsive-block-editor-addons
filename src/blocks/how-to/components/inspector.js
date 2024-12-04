@@ -17,6 +17,8 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 // Import block components
 const {
@@ -162,6 +164,20 @@ export default class Inspector extends Component {
                 //Image Styles
                 borderStyle,
                 borderRadius,
+                blockTopRadius,
+                blockRightRadius,
+                blockBottomRadius,
+                blockLeftRadius,
+                blockTopRadiusTablet,
+                blockRightRadiusTablet,
+                blockBottomRadiusTablet,
+                blockLeftRadiusTablet,
+                blockTopRadiusMobile,
+                blockRightRadiusMobile,
+                blockBottomRadiusMobile,
+                blockLeftRadiusMobile,
+                blockIsRadiusControlConnected,
+                blockIsRadiusValueUpdated,
                 borderWidth,
                 borderColor,
                 //Steps Attributes
@@ -175,6 +191,28 @@ export default class Inspector extends Component {
             },
             setAttributes,
         } = this.props;
+
+        // backward compatibility for border radius control 
+
+        if (!blockIsRadiusValueUpdated) {
+            this.props.setAttributes(
+                {
+                    blockTopRadius:          borderRadius !== undefined ? borderRadius : blockTopRadius,
+                    blockBottomRadius:       borderRadius !== undefined ? borderRadius : blockBottomRadius,
+                    blockLeftRadius:         borderRadius !== undefined ? borderRadius : blockLeftRadius,
+                    blockRightRadius:        borderRadius !== undefined ? borderRadius : blockRightRadius,
+                    blockTopRadiusTablet:    borderRadius !== undefined ? borderRadius : blockTopRadiusTablet,
+                    blockBottomRadiusTablet: borderRadius !== undefined ? borderRadius : blockBottomRadiusTablet,
+                    blockRightRadiusTablet:  borderRadius !== undefined ? borderRadius : blockRightRadiusTablet,
+                    blockLeftRadiusTablet:   borderRadius !== undefined ? borderRadius : blockLeftRadiusTablet,
+                    blockTopRadiusMobile:    borderRadius !== undefined ? borderRadius : blockTopRadiusMobile,
+                    blockBottomRadiusMobile: borderRadius !== undefined ? borderRadius : blockBottomRadiusMobile,
+                    blockLeftRadiusMobile:   borderRadius !== undefined ? borderRadius : blockLeftRadiusMobile,
+                    blockRightRadiusMobile:  borderRadius !== undefined ? borderRadius : blockRightRadiusMobile,
+                }
+            )
+            this.props.setAttributes({blockIsRadiusValueUpdated: true});
+        }
 
 
         return (
@@ -421,48 +459,9 @@ export default class Inspector extends Component {
                             />
                             {
                                 mainImage.url && (
-                                    <SelectControl
-                                        label={__("Border Style", "responsive-block-editor-addons")}
-                                        value={borderStyle}
+                                    <RbeaBorderStyleTabControl
+                                        selected={borderStyle}
                                         onChange={(value) => setAttributes({ borderStyle: value })}
-                                        options={[
-                                            {
-                                                value: "none",
-                                                label: __("None", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "solid",
-                                                label: __("Solid", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "dotted",
-                                                label: __("Dotted", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "dashed",
-                                                label: __("Dashed", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "double",
-                                                label: __("Double", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "groove",
-                                                label: __("Groove", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "inset",
-                                                label: __("Inset", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "outset",
-                                                label: __("Outset", "responsive-block-editor-addons"),
-                                            },
-                                            {
-                                                value: "ridge",
-                                                label: __("Ridge", "responsive-block-editor-addons"),
-                                            },
-                                        ]}
                                     />
                                 )
                             }
@@ -481,14 +480,9 @@ export default class Inspector extends Component {
                                             max={50}
                                             allowReset
                                         />
-                                        <RbeaRangeControl
-                                            label={__("Border Radius", "responsive-block-editor-addons")}
-                                            value={borderRadius}
-                                            onChange={(value) => {
-                                                setAttributes({ borderRadius: value });
-                                            }}
-                                            min={0}
-                                            max={100}
+                                        <RbeaBorderRadiusControl
+                                            attrNameTemplate="block%s"
+                                            {...this.props}
                                         />
                                     </Fragment>
                                 )

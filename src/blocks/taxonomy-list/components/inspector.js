@@ -10,6 +10,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 
 /**
  * Inspector Controls
@@ -78,6 +79,20 @@ export default class Inspector extends Component {
       bgColor,
       gridBorderColor,
       gridBorderRadius,
+      gridTopRadius,
+      gridRightRadius,
+      gridBottomRadius,
+      gridLeftRadius,
+      gridTopRadiusTablet,
+      gridRightRadiusTablet,
+      gridBottomRadiusTablet,
+      gridLeftRadiusTablet,
+      gridTopRadiusMobile,
+      gridRightRadiusMobile,
+      gridBottomRadiusMobile,
+      gridLeftRadiusMobile,
+      gridIsRadiusControlConnected,
+      gridIsRadiusValueUpdated,
       gridBorderStyle,
       gridBorderWidth,
       boxShadowColor,
@@ -270,6 +285,28 @@ export default class Inspector extends Component {
       },
     ];
 
+    // backward compatibility for border radius control
+
+if (!gridIsRadiusValueUpdated) {
+	this.props.setAttributes(
+	  {
+		gridTopRadius:          gridBorderRadius !== undefined ? gridBorderRadius : gridTopRadius,
+		gridBottomRadius:       gridBorderRadius !== undefined ? gridBorderRadius : gridBottomRadius,
+		gridLeftRadius:         gridBorderRadius !== undefined ? gridBorderRadius : gridLeftRadius,
+		gridRightRadius:        gridBorderRadius !== undefined ? gridBorderRadius : gridRightRadius,
+		gridTopRadiusTablet:    gridBorderRadius !== undefined ? gridBorderRadius : gridTopRadiusTablet,
+		gridBottomRadiusTablet: gridBorderRadius !== undefined ? gridBorderRadius : gridBottomRadiusTablet,
+		gridRightRadiusTablet:  gridBorderRadius !== undefined ? gridBorderRadius : gridRightRadiusTablet,
+		gridLeftRadiusTablet:   gridBorderRadius !== undefined ? gridBorderRadius : gridLeftRadiusTablet,
+		gridTopRadiusMobile:    gridBorderRadius !== undefined ? gridBorderRadius : gridTopRadiusMobile,
+		gridBottomRadiusMobile: gridBorderRadius !== undefined ? gridBorderRadius : gridBottomRadiusMobile,
+		gridLeftRadiusMobile:   gridBorderRadius !== undefined ? gridBorderRadius : gridLeftRadiusMobile,
+		gridRightRadiusMobile:  gridBorderRadius !== undefined ? gridBorderRadius : gridRightRadiusMobile,
+	  }
+	)
+	this.props.setAttributes({gridIsRadiusValueUpdated: true});
+  }
+  
     return (
       <InspectorControls>
         <InspectorTabs>
@@ -688,7 +725,7 @@ export default class Inspector extends Component {
                       label: __("Position", "responsive-block-editor-addons"),
                     }}
                   />
-                  <BlockBorderHelperControl
+                  <RbeaBlockBorderHelperControl
                     attrNameTemplate="grid%s"
                     values={{
                       radius: gridBorderRadius,

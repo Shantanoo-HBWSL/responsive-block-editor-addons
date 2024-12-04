@@ -26,6 +26,18 @@ function EditorStyles(props) {
     contentFontWeight,
     contentFontSize,
     itemBorderRadius,
+    itemTopRadius,
+    itemRightRadius,
+    itemBottomRadius,
+    itemLeftRadius,
+    itemTopRadiusTablet,
+    itemRightRadiusTablet,
+    itemBottomRadiusTablet,
+    itemLeftRadiusTablet,
+    itemTopRadiusMobile,
+    itemRightRadiusMobile,
+    itemBottomRadiusMobile,
+    itemLeftRadiusMobile,
     itemPadding,
     horizontalSpace,
     verticalSpace,
@@ -171,7 +183,10 @@ function EditorStyles(props) {
     },
 
     " .responsive-timeline__events-inner-new": {
-      "border-radius": generateCSSUnit(itemBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(itemTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(itemRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(itemBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(itemLeftRadius, "px"),
       "border-width": generateCSSUnit(itemBorderWidth, "px"),
       "border-style": itemBorderStyle,
       "border-color": itemBorderColor,
@@ -272,6 +287,12 @@ function EditorStyles(props) {
 	" .responsive-timeline__inner-date-new": {
 		"font-size": generateCSSUnit(dateFontSizeMobile, "px"),
 	},
+  " .responsive-timeline__events-inner-new": {
+    "border-top-left-radius": generateCSSUnit(itemTopRadiusMobile, "px"),
+    "border-top-right-radius": generateCSSUnit(itemRightRadiusMobile, "px"),
+    "border-bottom-right-radius": generateCSSUnit(itemBottomRadiusMobile, "px"),
+    "border-bottom-left-radius": generateCSSUnit(itemLeftRadiusMobile, "px"),
+  },
   };
 
   var tablet_selectors = {
@@ -320,6 +341,12 @@ function EditorStyles(props) {
 	" .responsive-timeline__inner-date-new": {
 		"font-size": generateCSSUnit(dateFontSizeTablet, "px"),
 	},
+  " .responsive-timeline__events-inner-new": {
+    "border-top-left-radius": generateCSSUnit(itemTopRadiusTablet, "px"),
+    "border-top-right-radius": generateCSSUnit(itemRightRadiusTablet, "px"),
+    "border-bottom-right-radius": generateCSSUnit(itemBottomRadiusTablet, "px"),
+    "border-bottom-left-radius": generateCSSUnit(itemLeftRadiusTablet, "px"),
+  },
   };
 
   var styling_css = "";

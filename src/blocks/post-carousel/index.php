@@ -239,6 +239,18 @@ function get_responsive_post_carousel_default_attributes() {
 		'arrowDotsColor'        => '#333',
 		'arrowBorderSize'       => 1,
 		'arrowBorderRadius'     => 0,
+		'arrowTopRadiusMobile'     => '',
+		'arrowRightRadiusMobile'   => '',
+		'arrowBottomRadiusMobile'  => '',
+		'arrowLeftRadiusMobile'    => '',
+		'arrowTopRadiusTablet'     => '',
+		'arrowRightRadiusTablet'   => '',
+		'arrowBottomRadiusTablet'  => '',
+		'arrowLeftRadiusTablet'    => '',
+		'arrowTopRadius'           => '',
+		'arrowRightRadius'         => '',
+		'arrowBottomRadius'        => '',
+		'arrowLeftRadius'          => '',
 		'postsToShow'           => 6,
 		'displayPostDate'       => true,
 		'displayPostExcerpt'    => true,
@@ -684,6 +696,62 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 				'arrowBorderRadius'       => array(
 					'type'    => 'number',
 					'default' => 0,
+				),
+				'arrowTopRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowRightRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowBottomRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowLeftRadius' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowTopRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowRightRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowBottomRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowLeftRadiusTablet' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowTopRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowRightRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowBottomRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowLeftRadiusMobile' => array(
+					'type' => "number",
+					'default' => 0,
+				),
+				'arrowIsRadiusControlConnected' => array(
+					'type' => "boolean",
+					'default' => false,
+				),
+				'arrowIsRadiusValueUpdated' => array(
+					'type' => "boolean",
+					'default' => false,
 				),
 
 				'categories'              => array(

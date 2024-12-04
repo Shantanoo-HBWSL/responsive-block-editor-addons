@@ -136,6 +136,62 @@ const attributes = {
       bottom: '4px',
     }
   },
+  formButtonTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  formButtonRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  formButtonBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  formButtonLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  formButtonTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formButtonRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formButtonBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formButtonLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formButtonTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formButtonRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formButtonBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formButtonLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formButtonIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  formButtonIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   formButtonPaddingToggle: {
     type: "string",
     default: "desktop",
@@ -192,6 +248,62 @@ const attributes = {
       right: '4px',
       bottom: '4px',
     }
+  },
+  formTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  formRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  formBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  formLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  formTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  formTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  formIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  formIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
   },
   formBorderWidth: {
     type: "object",

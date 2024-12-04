@@ -245,7 +245,7 @@ export default class Inspector extends Component {
           <RbeaMediaUploadControl
             label={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
             value={{
-                url: pricingList[index]["image"].url,
+                url: pricingList[index]["image"]? pricingList[index]["image"].url : '',
             }}
             onChange={(media) => {
               this.onSelectTestImage(media, index);

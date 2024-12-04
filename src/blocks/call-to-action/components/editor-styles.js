@@ -59,6 +59,19 @@ function EditorStyles(props) {
     buttonSpaceMobile,
     buttonSpaceTablet,
     borderRadius,
+    blockBorderRadius, 
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -101,6 +114,18 @@ function EditorStyles(props) {
     buttonTextFontWeight,
     iconPosition,
     ctaBorderRadius,
+    ctaBlockTopRadius,
+    ctaBlockRightRadius,
+    ctaBlockBottomRadius,
+    ctaBlockLeftRadius,
+    ctaBlockTopRadiusTablet,
+    ctaBlockRightRadiusTablet,
+    ctaBlockBottomRadiusTablet,
+    ctaBlockLeftRadiusTablet,
+    ctaBlockTopRadiusMobile,
+    ctaBlockRightRadiusMobile,
+    ctaBlockBottomRadiusMobile,
+    ctaBlockLeftRadiusMobile,
     ctaHpaddingTablet,
     ctaHpaddingMobile,
     ctaVpaddingTablet,
@@ -219,7 +244,10 @@ function EditorStyles(props) {
               colorLocation2
             )
           : undefined,
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -248,7 +276,10 @@ function EditorStyles(props) {
       "background-position": imagePosition !== "empty" && backgroundImagePosition === "center center" ? imagePosition : backgroundImagePosition, // For compatibility with v1.3.2.
       "background-repeat": imageRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? imageRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
       "background-size": thumbsize !== "empty" && backgroundImageSize === "cover" ? thumbsize : backgroundImageSize, // For compatibility with v1.3.2.
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
     },
 
     " .responsive-block-editor-addons-cta-title": {
@@ -275,7 +306,10 @@ function EditorStyles(props) {
       "padding-left": buttonhPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(buttonhPadding, "px") : generateCSSUnit(ctaHpadding, "px"), // For compatibility with v1.3.2.
       "padding-right": buttonhPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(buttonhPadding, "px") : generateCSSUnit(ctaHpadding, "px"), // For compatibility with v1.3.2.
       "border-style": buttonborderStyle !== "empty" && ctaBorderStyle === "solid" ? buttonborderStyle : (ctaBorderStyle ? ctaBorderStyle : "solid"), // For compatibility with v1.3.2.
-      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(ctaBlockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(ctaBlockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadius, "px"),
       "border-color": buttonborderColor !== "empty" && ctaBorderColor === "" ? buttonborderColor : ctaBorderColor, // For compatibility with v1.3.2.
       "background-color": updatedButtonBackgroundColor,
       "border-width": buttonborderWidth !== 999 && ctaBorderWidth === 1 ? buttonborderWidth : (ctaBorderWidth
@@ -312,6 +346,10 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-text": {
       "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
@@ -323,12 +361,22 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
       "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
       "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(ctaBlockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(ctaBlockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
+    },
+    " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
   };
 
@@ -347,6 +395,10 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-text": {
       "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
@@ -358,12 +410,22 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
       "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
       "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(ctaBlockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(ctaBlockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
       "font-size": generateCSSUnit(buttonTextFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeTablet, "px")}`,
+    },
+    " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
   };
 

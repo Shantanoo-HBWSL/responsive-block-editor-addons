@@ -21,7 +21,8 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
-
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -220,6 +221,19 @@ export default class Inspector extends Component {
         leftMarginMobile,
         rightMarginMobile,
         formBorderRadius,
+        formTopRadius,
+        formRightRadius,
+        formBottomRadius,
+        formLeftRadius,
+        formTopRadiusTablet,
+        formRightRadiusTablet,
+        formBottomRadiusTablet,
+        formLeftRadiusTablet,
+        formTopRadiusMobile,
+        formRightRadiusMobile,
+        formBottomRadiusMobile,
+        formLeftRadiusMobile,
+        formIsRadiusControlConnected,
         formBorderStyle,
         formBorderWidth,
         formBorderColor,
@@ -259,6 +273,19 @@ export default class Inspector extends Component {
         inputBackgroundColor,       
         //Border
         inputBorderRadius,
+        inputTopRadius,
+        inputRightRadius,
+        inputBottomRadius,
+        inputLeftRadius,
+        inputTopRadiusTablet,
+        inputRightRadiusTablet,
+        inputBottomRadiusTablet,
+        inputLeftRadiusTablet,
+        inputTopRadiusMobile,
+        inputRightRadiusMobile,
+        inputBottomRadiusMobile,
+        inputLeftRadiusMobile,
+        inputIsRadiusControlConnected,
         inputBorderColor,
         inputBorderStyle,
         inputBorderWidth,
@@ -335,6 +362,33 @@ export default class Inspector extends Component {
         radioCheckboxBorderColor,
         radioButtonBorderRadius,
         checkboxBorderRadius,
+        checkboxBorderTopRadius,
+        checkboxBorderRightRadius,
+        checkboxBorderBottomRadius,
+        checkboxBorderLeftRadius,
+        checkboxBorderTopRadiusTablet,
+        checkboxBorderRightRadiusTablet,
+        checkboxBorderBottomRadiusTablet,
+        checkboxBorderLeftRadiusTablet,
+        checkboxBorderTopRadiusMobile,
+        checkboxBorderRightRadiusMobile,
+        checkboxBorderBottomRadiusMobile,
+        checkboxBorderLeftRadiusMobile,
+        checkboxBorderIsRadiusControlConnected,
+        checkboxBorderIsRadiusValueUpdated,
+        radioButtonBorderTopRadius,
+        radioButtonBorderRightRadius,
+        radioButtonBorderBottomRadius,
+        radioButtonBorderLeftRadius,
+        radioButtonBorderTopRadiusTablet,
+        radioButtonBorderRightRadiusTablet,
+        radioButtonBorderBottomRadiusTablet,
+        radioButtonBorderLeftRadiusTablet,
+        radioButtonBorderTopRadiusMobile,
+        radioButtonBorderRightRadiusMobile,
+        radioButtonBorderBottomRadiusMobile,
+        radioButtonBorderLeftRadiusMobile,
+        radioButtonBorderIsRadiusControlConnected,
         //Submit Typography
         submitButtonFontFamily,
         submitButtonFontSize,
@@ -396,6 +450,19 @@ export default class Inspector extends Component {
         afterSubmitLeftMarginMobile,
         afterSubmitRightMarginMobile,
         afterSubmitBorderRadius,
+        afterSubmitTopRadius,
+        afterSubmitRightRadius,
+        afterSubmitBottomRadius,
+        afterSubmitLeftRadius,
+        afterSubmitTopRadiusTablet,
+        afterSubmitRightRadiusTablet,
+        afterSubmitBottomRadiusTablet,
+        afterSubmitLeftRadiusTablet,
+        afterSubmitTopRadiusMobile,
+        afterSubmitRightRadiusMobile,
+        afterSubmitBottomRadiusMobile,
+        afterSubmitLeftRadiusMobile,
+        afterSubmitIsRadiusControlConnected,
         afterSubmitBorderStyle,
         afterSubmitBorderWidth,
         afterSubmitBorderColor,
@@ -596,7 +663,79 @@ export default class Inspector extends Component {
       </Fragment>
     );
 
+  // backward compatibility for border radius control
 
+  if (!checkboxBorderIsRadiusValueUpdated) {
+    this.props.setAttributes(
+      {
+        checkboxBorderTopRadius:          checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderTopRadius,
+        checkboxBorderBottomRadius:       checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderBottomRadius,
+        checkboxBorderLeftRadius:         checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderLeftRadius,
+        checkboxBorderRightRadius:        checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderRightRadius,
+        checkboxBorderTopRadiusTablet:    checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderTopRadiusTablet,
+        checkboxBorderBottomRadiusTablet: checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderBottomRadiusTablet,
+        checkboxBorderRightRadiusTablet:  checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderRightRadiusTablet,
+        checkboxBorderLeftRadiusTablet:   checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderLeftRadiusTablet,
+        checkboxBorderTopRadiusMobile:    checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderTopRadiusMobile,
+        checkboxBorderBottomRadiusMobile: checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderBottomRadiusMobile,
+        checkboxBorderLeftRadiusMobile:   checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderLeftRadiusMobile,
+        checkboxBorderRightRadiusMobile:  checkboxBorderRadius !== undefined ? checkboxBorderRadius : checkboxBorderRightRadiusMobile,
+
+        radioButtonBorderTopRadius:          radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderTopRadius,
+        radioButtonBorderBottomRadius:       radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderBottomRadius,
+        radioButtonBorderLeftRadius:         radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderLeftRadius,
+        radioButtonBorderRightRadius:        radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderRightRadius,
+        radioButtonBorderTopRadiusTablet:    radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderTopRadiusTablet,
+        radioButtonBorderBottomRadiusTablet: radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderBottomRadiusTablet,
+        radioButtonBorderRightRadiusTablet:  radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderRightRadiusTablet,
+        radioButtonBorderLeftRadiusTablet:   radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderLeftRadiusTablet,
+        radioButtonBorderTopRadiusMobile:    radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderTopRadiusMobile,
+        radioButtonBorderBottomRadiusMobile: radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderBottomRadiusMobile,
+        radioButtonBorderLeftRadiusMobile:   radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderLeftRadiusMobile,
+        radioButtonBorderRightRadiusMobile:  radioButtonBorderRadius !== undefined ? radioButtonBorderRadius : radioButtonBorderRightRadiusMobile,
+
+        formTopRadius:          formBorderRadius !== undefined ? formBorderRadius : formTopRadius,
+        formBottomRadius:       formBorderRadius !== undefined ? formBorderRadius : formBottomRadius,
+        formLeftRadius:         formBorderRadius !== undefined ? formBorderRadius : formLeftRadius,
+        formRightRadius:        formBorderRadius !== undefined ? formBorderRadius : formRightRadius,
+        formTopRadiusTablet:    formBorderRadius !== undefined ? formBorderRadius : formTopRadiusTablet,
+        formBottomRadiusTablet: formBorderRadius !== undefined ? formBorderRadius : formBottomRadiusTablet,
+        formRightRadiusTablet:  formBorderRadius !== undefined ? formBorderRadius : formRightRadiusTablet,
+        formLeftRadiusTablet:   formBorderRadius !== undefined ? formBorderRadius : formLeftRadiusTablet,
+        formTopRadiusMobile:    formBorderRadius !== undefined ? formBorderRadius : formTopRadiusMobile,
+        formBottomRadiusMobile: formBorderRadius !== undefined ? formBorderRadius : formBottomRadiusMobile,
+        formLeftRadiusMobile:   formBorderRadius !== undefined ? formBorderRadius : formLeftRadiusMobile,
+        formRightRadiusMobile:  formBorderRadius !== undefined ? formBorderRadius : formRightRadiusMobile,
+
+        inputTopRadius:          inputBorderRadius !== undefined ? inputBorderRadius : inputTopRadius,
+        inputBottomRadius:       inputBorderRadius !== undefined ? inputBorderRadius : inputBottomRadius,
+        inputLeftRadius:         inputBorderRadius !== undefined ? inputBorderRadius : inputLeftRadius,
+        inputRightRadius:        inputBorderRadius !== undefined ? inputBorderRadius : inputRightRadius,
+        inputTopRadiusTablet:    inputBorderRadius !== undefined ? inputBorderRadius : inputTopRadiusTablet,
+        inputBottomRadiusTablet: inputBorderRadius !== undefined ? inputBorderRadius : inputBottomRadiusTablet,
+        inputRightRadiusTablet:  inputBorderRadius !== undefined ? inputBorderRadius : inputRightRadiusTablet,
+        inputLeftRadiusTablet:   inputBorderRadius !== undefined ? inputBorderRadius : inputLeftRadiusTablet,
+        inputTopRadiusMobile:    inputBorderRadius !== undefined ? inputBorderRadius : inputTopRadiusMobile,
+        inputBottomRadiusMobile: inputBorderRadius !== undefined ? inputBorderRadius : inputBottomRadiusMobile,
+        inputLeftRadiusMobile:   inputBorderRadius !== undefined ? inputBorderRadius : inputLeftRadiusMobile,
+        inputRightRadiusMobile:  inputBorderRadius !== undefined ? inputBorderRadius : inputRightRadiusMobile,
+
+        afterSubmitTopRadius:          afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitTopRadius,
+        afterSubmitBottomRadius:       afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitBottomRadius,
+        afterSubmitLeftRadius:         afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitLeftRadius,
+        afterSubmitRightRadius:        afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitRightRadius,
+        afterSubmitTopRadiusTablet:    afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitTopRadiusTablet,
+        afterSubmitBottomRadiusTablet: afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitBottomRadiusTablet,
+        afterSubmitRightRadiusTablet:  afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitRightRadiusTablet,
+        afterSubmitLeftRadiusTablet:   afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitLeftRadiusTablet,
+        afterSubmitTopRadiusMobile:    afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitTopRadiusMobile,
+        afterSubmitBottomRadiusMobile: afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitBottomRadiusMobile,
+        afterSubmitLeftRadiusMobile:   afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitLeftRadiusMobile,
+        afterSubmitRightRadiusMobile:  afterSubmitBorderRadius !== undefined ? afterSubmitBorderRadius : afterSubmitRightRadiusMobile,
+      }
+    )
+    this.props.setAttributes({checkboxBorderIsRadiusValueUpdated: true});
+  }
 
     return (
       <InspectorControls key="inspector">
@@ -937,7 +1076,7 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <BlockBorderHelperControl
+              <RbeaBlockBorderHelperControl
                 attrNameTemplate="form%s"
                 values={{
                   radius: formBorderRadius,
@@ -1186,7 +1325,7 @@ export default class Inspector extends Component {
                   title={__("Border", "responsive-block-editor-addons")}
                   initialOpen={false}
                 >
-                  <BlockBorderHelperControl
+                  <RbeaBlockBorderHelperControl
                     attrNameTemplate="input%s"
                     values={{ radius: inputBorderRadius, style: inputBorderStyle, width: inputBorderWidth, color: inputBorderColor }}
                     setAttributes={setAttributes}
@@ -1849,29 +1988,16 @@ export default class Inspector extends Component {
                 }
                 resetColor={() => setAttributes({ radioCheckboxBorderColor: "" })}
               />
-              <RbeaRangeControl
+              <RbeaBorderRadiusControl
                 label={__("Checkbox Border Radius", "responsive-block-editor-addons")}
-                value={checkboxBorderRadius}
-                onChange={(value) =>
-                  setAttributes({ checkboxBorderRadius: value !== undefined ? value : 0 })
-                }
-                min={0}
-                max={300}
-                beforeIcon=""
-                allowReset
+                attrNameTemplate="checkboxBorder%s"
+                {...this.props}
               />
-              <RbeaRangeControl
+              <RbeaBorderRadiusControl
                 label={__("Radio Buttons Border Radius", "responsive-block-editor-addons")}
-                value={radioButtonBorderRadius}
-                onChange={(value) =>
-                  setAttributes({ radioButtonBorderRadius: value !== undefined ? value : 0 })
-                }
-                min={0}
-                max={300}
-                beforeIcon=""
-                allowReset
-              />             
-              
+                attrNameTemplate="radioButtonBorder%s"
+                {...this.props}
+              /> 
               </PanelBody>   
               )}                                  
             </PanelBody>
@@ -2742,7 +2868,7 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <BlockBorderHelperControl
+              <RbeaBlockBorderHelperControl
                 attrNameTemplate="afterSubmit%s"
                 values={{
                   radius: afterSubmitBorderRadius,

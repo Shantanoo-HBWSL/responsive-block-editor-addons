@@ -149,6 +149,62 @@ const attributes = {
         type: "number",
         default: 2,
     },
+    popupBlockTopRadius: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockRightRadius: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockBottomRadius: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockLeftRadius: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockTopRadiusTablet: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockRightRadiusTablet: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockBottomRadiusTablet: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockLeftRadiusTablet: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockTopRadiusMobile: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockRightRadiusMobile: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockBottomRadiusMobile: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockLeftRadiusMobile: {
+        type: "number",
+        default: 0,
+      },
+      popupBlockIsRadiusControlConnected: {
+            type: "boolean",
+            default: false,
+        },
+      popupBlockIsRadiusValueUpdated: {
+        type: "boolean",
+        default: false,
+      },
     popupBlockBorderColor: {
         type: "string",
         default: "black",
@@ -256,6 +312,118 @@ const attributes = {
         type: "number",
         default: 2,
     },
+    popupButtonTopRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonRightRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonBottomRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonLeftRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonTopRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonRightRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonBottomRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonLeftRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonTopRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonRightRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonBottomRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonLeftRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonIsRadiusControlConnected: {
+            type: "boolean",
+            default: false,
+        },
+    popupButtonIsRadiusValueUpdated: {
+        type: "boolean",
+        default: false,
+    },
+    popupButtonTopRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonRightRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonBottomRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonLeftRadius: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonTopRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonRightRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonBottomRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonLeftRadiusTablet: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonTopRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonRightRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonBottomRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonLeftRadiusMobile: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonIsRadiusControlConnected: {
+            type: "boolean",
+            default: false,
+        },
+    popupButtonIsRadiusValueUpdated: {
+        type: "boolean",
+        default: false,
+    },
     popupButtonBorderColor: {
         type: "string",
         default: 'black',
@@ -314,6 +482,62 @@ const attributes = {
     popupImageTriggerBorderRadius: {
         type: "number",
         default: 0,
+    },
+    popupImageTriggerTopRadius: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerRightRadius: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerBottomRadius: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerLeftRadius: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerTopRadiusTablet: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerRightRadiusTablet: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerBottomRadiusTablet: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerLeftRadiusTablet: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerTopRadiusMobile: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerRightRadiusMobile: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerBottomRadiusMobile: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerLeftRadiusMobile: {
+      type: "number",
+      default: 0,
+    },
+    popupImageTriggerIsRadiusControlConnected: {
+      type: "boolean",
+      default: false,
+    },
+    popupImageTriggerIsRadiusValueUpdated: {
+      type: "boolean",
+      default: false,
     },
     popupButtonText: {
         type: "string",

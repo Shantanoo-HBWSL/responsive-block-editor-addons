@@ -20,6 +20,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -99,6 +100,20 @@ export default class Inspector extends Component {
         contentFontSize,
         headingTag,
         itemBorderRadius,
+        itemTopRadius,
+        itemRightRadius,
+        itemBottomRadius,
+        itemLeftRadius,
+        itemTopRadiusTablet,
+        itemRightRadiusTablet,
+        itemBottomRadiusTablet,
+        itemLeftRadiusTablet,
+        itemTopRadiusMobile,
+        itemRightRadiusMobile,
+        itemBottomRadiusMobile,
+        itemLeftRadiusMobile,
+        itemIsRadiusControlConnected,
+        itemIsRadiusValueUpdated,
         itemPadding,
         horizontalSpace,
         verticalSpace,
@@ -300,6 +315,29 @@ export default class Inspector extends Component {
       ),
     };
 
+    // backward compatibility for border radius control
+
+  if (!itemIsRadiusValueUpdated) {
+    this.props.setAttributes(
+      {
+      itemTopRadius:          itemBorderRadius !== undefined ? itemBorderRadius : itemTopRadius,
+      itemBottomRadius:       itemBorderRadius !== undefined ? itemBorderRadius : itemBottomRadius,
+      itemLeftRadius:         itemBorderRadius !== undefined ? itemBorderRadius : itemLeftRadius,
+      itemRightRadius:        itemBorderRadius !== undefined ? itemBorderRadius : itemRightRadius,
+      itemTopRadiusTablet:    itemBorderRadius !== undefined ? itemBorderRadius : itemTopRadiusTablet,
+      itemBottomRadiusTablet: itemBorderRadius !== undefined ? itemBorderRadius : itemBottomRadiusTablet,
+      itemRightRadiusTablet:  itemBorderRadius !== undefined ? itemBorderRadius : itemRightRadiusTablet,
+      itemLeftRadiusTablet:   itemBorderRadius !== undefined ? itemBorderRadius : itemLeftRadiusTablet,
+      itemTopRadiusMobile:    itemBorderRadius !== undefined ? itemBorderRadius : itemTopRadiusMobile,
+      itemBottomRadiusMobile: itemBorderRadius !== undefined ? itemBorderRadius : itemBottomRadiusMobile,
+      itemLeftRadiusMobile:   itemBorderRadius !== undefined ? itemBorderRadius : itemLeftRadiusMobile,
+      itemRightRadiusMobile:  itemBorderRadius !== undefined ? itemBorderRadius : itemRightRadiusMobile,
+      }
+    )
+    this.props.setAttributes({itemIsRadiusValueUpdated: true});
+  }
+
+
     return (
       <InspectorControls key="inspector">
         <InspectorTabs>
@@ -437,7 +475,7 @@ export default class Inspector extends Component {
                 }
                 defaultValue={"h1"}
               />
-                <BlockBorderHelperControl
+                <RbeaBlockBorderHelperControl
                     attrNameTemplate="item%s"
                     values={{ radius: itemBorderRadius, style: itemBorderStyle, width: itemBorderWidth, color: itemBorderColor }}
                     setAttributes={setAttributes}

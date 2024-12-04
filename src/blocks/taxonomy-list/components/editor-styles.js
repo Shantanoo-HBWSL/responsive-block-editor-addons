@@ -12,6 +12,18 @@ function EditorStyles(props) {
         block_id,
         gridBorderColor,
         gridBorderRadius,
+        gridTopRadius,
+        gridRightRadius,
+        gridBottomRadius,
+        gridLeftRadius,
+        gridTopRadiusTablet,
+        gridRightRadiusTablet,
+        gridBottomRadiusTablet,
+        gridLeftRadiusTablet,
+        gridTopRadiusMobile,
+        gridRightRadiusMobile,
+        gridBottomRadiusMobile,
+        gridLeftRadiusMobile,
         gridBorderStyle,
         gridBorderWidth,
         boxShadow,
@@ -107,7 +119,9 @@ function EditorStyles(props) {
 
 
     const borderGrid = "none" !== gridBorderStyle ? generateCSSUnit(gridBorderWidth, "px") + ' ' + gridBorderStyle + ' ' + gridBorderColor : "none";
-    const borderRadiusGrid = "none" !== gridBorderStyle ? generateCSSUnit(gridBorderRadius, "px") : 0;
+    const borderRadiusGrid = "none" !== gridBorderStyle ? generateCSSUnit(gridTopRadius, "px") + ' ' +  generateCSSUnit(gridRightRadius, "px") + ' ' +  generateCSSUnit(gridBottomRadius, "px") + ' ' +  generateCSSUnit(gridLeftRadius, "px"): 0;
+    const borderRadiusGridMobile = "none" !== gridBorderStyle ? generateCSSUnit(gridTopRadiusMobile, "px") + ' ' +  generateCSSUnit(gridRightRadiusMobile, "px") + ' ' +  generateCSSUnit(gridBottomRadiusMobile, "px") + ' ' +  generateCSSUnit(gridLeftRadiusMobile, "px"): 0;
+    const borderRadiusGridTablet = "none" !== gridBorderStyle ? generateCSSUnit(gridTopRadiusTablet, "px") + ' ' +  generateCSSUnit(gridRightRadiusTablet, "px") + ' ' +  generateCSSUnit(gridBottomRadiusTablet, "px") + ' ' +  generateCSSUnit(gridLeftRadiusTablet, "px"): 0;
     const borderBottomColor = "none" !== separatorStyle ? separatorColor : "";
     const borderBottomWidth = "none" !== separatorStyle ? separatorWidth : 0;
     var boxShadowPositionCSS = boxShadowPosition;
@@ -211,6 +225,7 @@ function EditorStyles(props) {
 
         " .responsive-block-editor-addons-block-box": {
             "padding": generateCSSUnit(contentPaddingMobile, "px"),
+            "border-radius": borderRadiusGridMobile,
         },
         " .responsive-block-editor-addons-block-title": {
             "font-size": `${generateCSSUnit(titleFontSizeMobile, "px")} !important`,
@@ -247,7 +262,8 @@ function EditorStyles(props) {
             "grid-row-gap": generateCSSUnit(rowGapTablet, "px")
         },
         " .responsive-block-editor-addons-block-box": {
-            "padding": generateCSSUnit(contentPaddingTablet, "px")
+            "padding": generateCSSUnit(contentPaddingTablet, "px"),
+            "border-radius": borderRadiusGridTablet,
         },
         " .responsive-block-editor-addons-block-title": {
             "font-size": `${generateCSSUnit(titleFontSizeTablet, "px")} !important`,

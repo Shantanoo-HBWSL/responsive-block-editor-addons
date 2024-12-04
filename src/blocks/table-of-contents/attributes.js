@@ -482,6 +482,118 @@ const attributes = {
   headingBorderBottomRightRadiusTablet: {
     type: "number",
   },
+  headingBorderTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  headingBorderIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  headingBorderIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  bodyBorderTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bodyBorderIsRadiusControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  bodyBorderIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   blockBorderColor: {
     type: "string",
     default: "#0984ff",

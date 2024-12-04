@@ -5,7 +5,7 @@
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import SectionBlockBorderHelperControl from "../../../settings-components/SectionBlockBorderSettings";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import generateCSSUnit from "../../../generateCSSUnit";
@@ -869,7 +869,7 @@ export default class Inspector extends Component {
                     <RbeaMediaUploadControl
                       label={__('Video', 'responsive-block-editor-addons')}
                       value={{
-                          url: backgroundVideo.url || '',
+                          url: backgroundVideo? backgroundVideo.url : '',
                       }}
                       onChange={(newValue) => { 
                           setAttributes({
@@ -896,7 +896,7 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                <SectionBlockBorderHelperControl
+                <RbeaBlockBorderHelperControl
                     attrNameTemplate="block%s"
                     values={{
                         radius: blockBorderRadius,

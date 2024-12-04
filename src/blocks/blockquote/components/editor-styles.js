@@ -62,6 +62,18 @@ function EditorStyles(props) {
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
     blockBorderColor,
     textTopPadding,
     textTopPaddingMobile,
@@ -107,7 +119,10 @@ function EditorStyles(props) {
       "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -150,7 +165,10 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-section-background-image-wrap .responsive-block-editor-addons-section-background-image": {
       height: 100 + "%",
       opacity: imgopacity,
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote": {
       height: generateCSSUnit(quoteSize, "px"),
@@ -186,6 +204,10 @@ function EditorStyles(props) {
       "margin-right" : generateCSSUnit(blockRightMarginMobile, "px"),
       "margin-bottom" : generateCSSUnit(blockBottomMarginMobile, "px"),
       "margin-left" : generateCSSUnit(blockLeftMarginMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPaddingMobile, "px"),
@@ -196,6 +218,12 @@ function EditorStyles(props) {
 	" .responsive-block-editor-addons-block-blockquote-text": {
 		"font-size": generateCSSUnit(quoteFontSizeMobile, "px"),
 	},
+  " .responsive-block-editor-addons-section-background-image-wrap .responsive-block-editor-addons-section-background-image": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -209,6 +237,10 @@ function EditorStyles(props) {
       "margin-right" : generateCSSUnit(blockRightMarginTablet, "px"),
       "margin-bottom" : generateCSSUnit(blockBottomMarginTablet, "px"),
       "margin-left" : generateCSSUnit(blockLeftMarginTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPaddingTablet, "px"),
@@ -219,6 +251,12 @@ function EditorStyles(props) {
 	" .responsive-block-editor-addons-block-blockquote-text": {
 		"font-size": generateCSSUnit(quoteFontSizeTablet, "px"),
 	},
+  " .responsive-block-editor-addons-section-background-image-wrap .responsive-block-editor-addons-section-background-image": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
   };
 
   var styling_css = "";

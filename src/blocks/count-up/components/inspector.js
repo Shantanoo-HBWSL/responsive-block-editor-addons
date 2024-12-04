@@ -11,6 +11,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
@@ -18,6 +19,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -88,6 +90,19 @@ export default class Inspector extends Component {
         blockBorderStyle,
         blockBorderWidth,
         blockBorderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusControlConnected,
         blockBorderColor,
         opacity,
         icon_color,
@@ -101,6 +116,20 @@ export default class Inspector extends Component {
         iconStyle,
         iconShapeColor,
         shapeBorderRadius,
+        shapeBorderTopRadius,
+        shapeBorderRightRadius,
+        shapeBorderBottomRadius,
+        shapeBorderLeftRadius,
+        shapeBorderTopRadiusTablet,
+        shapeBorderRightRadiusTablet,
+        shapeBorderBottomRadiusTablet,
+        shapeBorderLeftRadiusTablet,
+        shapeBorderTopRadiusMobile,
+        shapeBorderRightRadiusMobile,
+        shapeBorderBottomRadiusMobile,
+        shapeBorderLeftRadiusMobile,
+        shapeBorderIsRadiusControlConnected,
+        shapeBorderIsRadiusValueUpdated,
         shapePadding,
         shapeBorder,
         contentSpacing,
@@ -199,8 +228,42 @@ export default class Inspector extends Component {
          blockLeftPaddingMobile:   contentSpacingMobile !== undefined ? contentSpacingMobile : blockLeftPaddingMobile,
        }
      )
+     this.props.setAttributes({blockNewSpacingValuesUpdated: true});
     }
-        this.props.setAttributes({blockNewSpacingValuesUpdated: true});
+
+    // backward compatibility for border radius control
+
+    if (!shapeBorderIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          shapeBorderTopRadius:          shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderTopRadius,
+          shapeBorderBottomRadius:       shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderBottomRadius,
+          shapeBorderLeftRadius:         shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderLeftRadius,
+          shapeBorderRightRadius:        shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderRightRadius,
+          shapeBorderTopRadiusTablet:    shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderTopRadiusTablet,
+          shapeBorderBottomRadiusTablet: shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderBottomRadiusTablet,
+          shapeBorderRightRadiusTablet:  shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderRightRadiusTablet,
+          shapeBorderLeftRadiusTablet:   shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderLeftRadiusTablet,
+          shapeBorderTopRadiusMobile:    shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderTopRadiusMobile,
+          shapeBorderBottomRadiusMobile: shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderBottomRadiusMobile,
+          shapeBorderLeftRadiusMobile:   shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderLeftRadiusMobile,
+          shapeBorderRightRadiusMobile:  shapeBorderRadius !== undefined ? shapeBorderRadius : shapeBorderRightRadiusMobile,
+          blockTopRadius:          blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadius,
+          blockBottomRadius:       blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadius,
+          blockLeftRadius:         blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadius,
+          blockRightRadius:        blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadius,
+          blockTopRadiusTablet:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({shapeBorderIsRadiusValueUpdated: true});
+    }
 
     var data_copy = [...countUp];
 
@@ -600,24 +663,10 @@ export default class Inspector extends Component {
                       }
                       resetColor={() => setAttributes({ iconShapeColor: "" })}
                     />
-                    <RbeaRangeControl
-                      label={__("Shape / Outline Border Radius", "responsive-block-editor-addons")}
-                      value={shapeBorderRadius}
-                      onChange={(value) =>
-                        setAttributes({ shapeBorderRadius: value })
-                      }
-                      min={0}
-                      max={50}
-                    />
-                    <RbeaRangeControl
-                      label={__("Shape / Outline Padding", "responsive-block-editor-addons")}
-                      value={shapePadding}
-                      onChange={(value) =>
-                        setAttributes({ shapePadding: value })
-                      }
-                      min={0}
-                      max={100}
-                    />
+                      <RbeaBorderRadiusControl
+                        attrNameTemplate="shapeBorder%s"
+                        {...this.props}
+                      />
                     <RbeaRangeControl
                       label={__("Outline Width", "responsive-block-editor-addons")}
                       value={shapeBorder}
@@ -736,7 +785,7 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                <BlockBorderHelperControl
+                <RbeaBlockBorderHelperControl
                     attrNameTemplate="block%s"
                     values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
                     setAttributes={ setAttributes }

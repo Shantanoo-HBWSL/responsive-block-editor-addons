@@ -40,6 +40,62 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  bubbleTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  bubbleRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  bubbleBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  bubbleLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  bubbleTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bubbleRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bubbleBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bubbleLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  bubbleTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bubbleRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bubbleBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bubbleLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  bubbleIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  bubbleIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   bubbleColor: {
     type: "string",
     default: "center",
@@ -330,6 +386,62 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  arrowTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  arrowRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  arrowBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  arrowLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  arrowTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  arrowRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  arrowBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  arrowLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  arrowTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  arrowRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  arrowBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  arrowLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  arrowIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  arrowIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
     arrowBorderColor: {
         type: "string",
     },
@@ -444,6 +556,62 @@ const attributes = {
   },
     blockBorderRadius: {
     type: "number",
+  },
+  blockTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
   },
     blockBorderColor: {
     type: "string",

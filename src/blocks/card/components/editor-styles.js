@@ -15,6 +15,18 @@ function EditorStyles(props) {
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
     blockBorderColor,
     borderStyle, //For compatibility with v1.3.2.
     borderColor, //For compatibility with v1.3.2.
@@ -247,7 +259,10 @@ function EditorStyles(props) {
       "border-color": borderColor!== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, //For compatibility with v1.3.2.
       "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, //For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 0 ? generateCSSUnit( borderWidth, "px" ) : generateCSSUnit(blockBorderWidth, "px"), //For compatibility with v1.3.2.
-      "border-radius": borderRadius !== 999 && blockBorderRadius === 12 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), //For compatibility with v1.3.2.
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       color: textColor,
       "background-color":
         backgroundType == "color"
@@ -424,6 +439,12 @@ function EditorStyles(props) {
     "margin-left": generateCSSUnit(hMarginMobile, "px"),
     "margin-right": generateCSSUnit(hMarginMobile, "px"),
   },
+  " .wp-block-responsive-block-editor-addons-card-item": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -462,6 +483,12 @@ function EditorStyles(props) {
     "margin-left": generateCSSUnit(hMarginTablet, "px"),
     "margin-right": generateCSSUnit(hMarginTablet, "px"),
   },
+  " .wp-block-responsive-block-editor-addons-card-item": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
   };
 
   var styling_css = "";

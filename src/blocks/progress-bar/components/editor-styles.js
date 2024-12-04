@@ -24,6 +24,18 @@ function EditorStyles(props) {
 		horizontalProgressBarInnerTitleValueColor,
 		horizontalProgressBarBottomTitleValueColor,
 		horizontalProgressBarBorderRadius,
+		horizontalProgressBarTopRadius,
+		horizontalProgressBarRightRadius,
+		horizontalProgressBarBottomRadius,
+		horizontalProgressBarLeftRadius,
+		horizontalProgressBarTopRadiusTablet,
+		horizontalProgressBarRightRadiusTablet,
+		horizontalProgressBarBottomRadiusTablet,
+		horizontalProgressBarLeftRadiusTablet,
+		horizontalProgressBarTopRadiusMobile,
+		horizontalProgressBarRightRadiusMobile,
+		horizontalProgressBarBottomRadiusMobile,
+		horizontalProgressBarLeftRadiusMobile,
 		horizontalProgressBarBorderStyle,
 		horizontalProgressBarBorderWidth,
 		horizontalProgressBarBorderColor,
@@ -207,7 +219,10 @@ function EditorStyles(props) {
 		" .responsive-horizontal-progress-bar": {
 			"height": generateCSSUnit(horizontalProgressBarSize, "px"),
 			"background-color": horizontalProgressBarBackgroundColor,
-			"border-radius": generateCSSUnit(horizontalProgressBarBorderRadius, "px"),
+			"border-top-left-radius": generateCSSUnit(horizontalProgressBarTopRadius, "px"),
+			"border-top-right-radius": generateCSSUnit(horizontalProgressBarRightRadius, "px"),
+			"border-bottom-right-radius": generateCSSUnit(horizontalProgressBarBottomRadius, "px"),
+			"border-bottom-left-radius": generateCSSUnit(horizontalProgressBarLeftRadius, "px"),
 			"border-style": horizontalProgressBarBorderStyle,
 			"border-width": generateCSSUnit(horizontalProgressBarBorderWidth, "px"),
 			"border-color": horizontalProgressBarBorderColor,
@@ -469,6 +484,12 @@ function EditorStyles(props) {
 		" .responsive-semi-circular-progress-bar-bottom-value": {
 			"font-size": generateCSSUnit(semiCircularBottomTitleValueFontSizeMobile, "px"),
 		},
+		" .responsive-horizontal-progress-bar": {
+			"border-top-left-radius": generateCSSUnit(horizontalProgressBarTopRadiusMobile, "px"),
+			"border-top-right-radius": generateCSSUnit(horizontalProgressBarRightRadiusMobile, "px"),
+			"border-bottom-right-radius": generateCSSUnit(horizontalProgressBarBottomRadiusMobile, "px"),
+			"border-bottom-left-radius": generateCSSUnit(horizontalProgressBarLeftRadiusMobile, "px"),
+		},
 	};
 
 	var tablet_selectors = {
@@ -532,6 +553,12 @@ function EditorStyles(props) {
 		},
 		" .responsive-semi-circular-progress-bar-bottom-value": {
 			"font-size": generateCSSUnit(semiCircularBottomTitleValueFontSizeTablet, "px"),
+		},
+		" .responsive-horizontal-progress-bar": {
+			"border-top-left-radius": generateCSSUnit(horizontalProgressBarTopRadiusTablet, "px"),
+			"border-top-right-radius": generateCSSUnit(horizontalProgressBarRightRadiusTablet, "px"),
+			"border-bottom-right-radius": generateCSSUnit(horizontalProgressBarBottomRadiusTablet, "px"),
+			"border-bottom-left-radius": generateCSSUnit(horizontalProgressBarLeftRadiusTablet, "px"),
 		},
 	};
 

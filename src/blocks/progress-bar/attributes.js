@@ -170,6 +170,118 @@ const attributes = {
 		type: "number",
 		default: 5,
 	},
+	horizontalProgressBarTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  horizontalProgressBarIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  horizontalProgressBarTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalProgressBarIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  horizontalProgressBarIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
 	horizontalProgressBarBorderStyle: {
 		type: "string",
 		default: "solid",
