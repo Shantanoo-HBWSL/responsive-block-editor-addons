@@ -12,6 +12,7 @@
  * @return void
  */
 function responsive_block_editor_addons_image_slider_add_frontend_assets() {
+	$widget_blocks = get_option('widget_block');
 	if ( has_block( 'responsive-block-editor-addons/image-slider' ) ) {
 		wp_enqueue_script(
 			'responsive_block_editor_addons-image-slider-front-script',
@@ -28,6 +29,27 @@ function responsive_block_editor_addons_image_slider_add_frontend_assets() {
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 			true
 		);
+	}
+	else if (!empty($widget_blocks)) {
+		foreach ($widget_blocks as $widget) {
+			if (!empty($widget['content'])) {
+				wp_enqueue_script(
+					'responsive_block_editor_addons-image-slider-front-script',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/flickity.js',
+					array(),
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+					true
+				);
+		
+				wp_enqueue_script(
+					'responsive_block_editor_addons-image-slider-lightbox',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-lightbox.js',
+					array(),
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+					true
+				);
+			}
+		}
 	}
 }
 

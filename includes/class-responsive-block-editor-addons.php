@@ -735,11 +735,19 @@ class Responsive_Block_Editor_Addons {
 		if ( ! is_admin() ) {
 
 			$post = get_post();
+			$widget_blocks = get_option('widget_block');
 
 			$flag = false;
 
-			if ( $post ) {
+			if ( $post || !empty($widget_blocks) ) {
 				$blocks = parse_blocks( $post->post_content );
+
+				foreach ($widget_blocks as $widget) {
+					if (!empty($widget['content'])) {
+						$flag = true;
+						break;
+					}
+				}
 
 				foreach ( $blocks as $block ) {
 					// Retrieve all block names for the current block and its inner blocks.

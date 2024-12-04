@@ -12,6 +12,7 @@
  * @param Array $attributes Attributes.
  */
 function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attributes ) {
+	$widget_blocks = get_option('widget_block');
 	if ( has_block( 'responsive-block-editor-addons/post-carousel' ) ) {
 		wp_enqueue_script(
 			'responsive_block_editor_addons-slick-js',
@@ -25,6 +26,23 @@ function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attr
 		$js       = 'jQuery( document ).ready( function( $ ) { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).slick( ); } } );';
 		wp_add_inline_script( 'responsive_block_editor_addons-slick-js-post-carousel', $js );
 	}
+	else if ( ! empty( $widget_blocks ) ) {
+		foreach ( $widget_blocks as $widget ) {
+			if ( ! empty( $widget['content'] ) ) {
+				wp_enqueue_script(
+					'responsive_block_editor_addons-slick-js',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/slick.min.js',
+					array( 'jquery' ),
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+					true
+				);
+		
+				$selector = '.responsive-post-slick-carousel';
+				$js       = 'jQuery( document ).ready( function( $ ) { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).slick( ); } } );';
+				wp_add_inline_script( 'responsive_block_editor_addons-slick-js-post-carousel', $js );
+			}
+		}
+	}
 }
 add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_post_carousel_add_frontend_assets' );
 add_action( 'the_post', 'responsive_block_editor_addons_post_carousel_add_frontend_assets' );
@@ -35,6 +53,7 @@ add_action( 'the_post', 'responsive_block_editor_addons_post_carousel_add_fronte
 function post_carousel_generate_script() {
 	global $post;
 	$this_post = $post;
+	$widget_blocks = get_option('widget_block');
 
 	if ( ! is_object( $this_post ) ) {
 		return;
@@ -53,6 +72,20 @@ function post_carousel_generate_script() {
 		}
 
 		get_responsive_post_carousel_scripts( $blocks );
+	}
+
+	if(!empty($widget_blocks)) {
+		foreach ( $widget_blocks as $widget ) {
+			if ( ! empty( $widget['content'] ) ) {
+				$blocks_from_widgets = responsive_parse_gutenberg_blocks_post_carousel( $widget['content'] );
+
+				if ( ! is_array( $blocks_from_widgets ) || empty( $blocks_from_widgets ) ) {
+					return;
+				}
+			
+				get_responsive_post_carousel_scripts( $blocks_from_widgets );
+			}
+		}
 	}
 }
 
