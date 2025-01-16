@@ -330,7 +330,7 @@ const attributes = {
     type: "object",
     default: {
       url: "",
-      alt: "InfoBlock placeholder img",
+      alt: "",
     },
   },
   imageSize: {
