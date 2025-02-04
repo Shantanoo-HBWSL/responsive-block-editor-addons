@@ -158,3 +158,7 @@ import "./blocks/form/input/index.js";
 import "./blocks/section-block/index.js";
 // Extensions
 import "./extensions/cover-styles";
+
+// Container
+import "./blocks/container/index.js";
+import "./blocks/container/variations/index.js";
