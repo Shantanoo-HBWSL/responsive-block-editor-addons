@@ -21037,6 +21037,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			return array(
 				'imageUrl' => '',
 				'altText' => '',
+				'mediaUploadAltText' => '', 
 				'caption' => '',
 				'sourceType' => '',
 				'imageAlignment' => 'left',
