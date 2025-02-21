@@ -64,7 +64,6 @@ export default class Edit extends Component {
     }
     window.addEventListener("load", responsiveTimelineInit);
     window.addEventListener("resize", responsiveTimelineInit);
-    // document.addEventListener("scroll", responsiveTimelineInit);
     const responsiveTimelines = document.querySelectorAll('.interface-interface-skeleton__content');
     responsiveTimelines.forEach((timeline) => {
         timeline.addEventListener('scroll', responsiveTimelineInit);
