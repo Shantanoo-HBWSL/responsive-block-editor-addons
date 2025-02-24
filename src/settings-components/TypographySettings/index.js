@@ -8,7 +8,7 @@ import RbeaTabRadioControl from "../../utils/components/rbea-tab-radio-control";
 import textDecorationIcons from "./text-decoration-icons";
 
 /**
- * Box-Shadow reusable component.
+ * Typography reusable component.
  *
  */
 const { __ } = wp.i18n;
@@ -49,6 +49,7 @@ const TypographyHelperControl = (props) => {
             onChangeTextTransform={value => props.setAttributes({ [getAttrName('TextTransform')]: value })}
             onChangeTextDecoration={value => props.setAttributes({ [getAttrName('TextDecoration')]: value })}
             onChangeTextColor={value => props.setAttributes({ [getAttrName['Color']]: value })}
+            getAttrName={getAttrName}
             {...props}
         />
     );
@@ -154,7 +155,9 @@ class TypographyControl extends Component {
                             label={__("Color", "responsive-block-editor-addons")}
                             colorValue={this.props.values.color}
                             onChange={this.props.onChangeTypographyColor}
-                            resetColor={() => setAttributes({ [this.props.values.color]: "" })}
+                            resetColor={() => {
+                                this.props.setAttributes({ [this.props.getAttrName('TypographyColor')]: "" });
+                            }}
                         />
                     )}
                     {(this.props.showActiveColorControl == true) && (
@@ -162,7 +165,9 @@ class TypographyControl extends Component {
                             label={__("Active Color", "responsive-block-editor-addons")}
                             colorValue={this.props.values.activeColor}
                             onChange={this.props.onChangeActiveTypographyColor}
-                            resetColor={() => setAttributes({ [this.props.values.activeColor]: "" })}
+                            resetColor={() => {
+                                this.props.setAttributes({ [this.props.getAttrName('ActiveTypographyColor')]: "" });
+                            }}
                         />
                     )}
                     <SelectControl
